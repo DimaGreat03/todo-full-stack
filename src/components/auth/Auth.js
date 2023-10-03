@@ -27,7 +27,7 @@ const Auth = ({ setIsAuth }) => {
       .then((data) => {
         localStorage.setItem("token", data.data.token);
         setIsAuth(true);
-        navigate("/main");
+        navigate("/incoming");
         console.log(data)
       })
       .catch((error) => toast.error(error.response.data.message));

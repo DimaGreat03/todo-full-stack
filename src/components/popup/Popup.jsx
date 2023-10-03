@@ -14,6 +14,7 @@ const Popup = ({setWatcher, watcher}) => {
   const [title, setTitle] = useState("")
   const [deepPopup, setDeepPopup] = useState(false)
   const [deepPopupId, setDeepPopupId] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
   let day = new Date().toISOString().slice(0, 10).split("-").reverse().join(".");
   let time = new Date().toLocaleTimeString();
 

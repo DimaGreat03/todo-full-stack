@@ -53,6 +53,7 @@ const DeadLine = () => {
     instance
       .patch(`/transactions/transaction/${id}`, {
         isActive: false,
+        incomingTask: false,
       })
       .then((data) => setWatcher(!watcher));
   };
@@ -104,7 +105,7 @@ const DeadLine = () => {
                     setLi(!li);
                     setPopId(e.id);
                     setIsPopupOpen(!isPopupOpen);
-                    localStorage.setItem("popupId", e.id);
+                    localStorage.setItem("popId", e.id);
                     localStorage.setItem('text', e.notes)
                     checkDate(e.untill)
                   }}

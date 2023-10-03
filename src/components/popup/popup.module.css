@@ -52,7 +52,7 @@
   background-color: #252931;
   color: rgb(139, 139, 139);
   border-style: none;
-  font-size: 17px;
+  font-size: 18px;
   width: 500px;
   outline: none;
   margin-bottom: -30px;
@@ -75,3 +75,11 @@
   margin-left: 5px;
   vertical-align: text-top;
 }
+
+.loadingPopup {
+  margin-left: 20px;
+}
+
+
+
+

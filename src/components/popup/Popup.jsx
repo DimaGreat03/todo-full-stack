@@ -4,6 +4,11 @@ import { instance } from "../api/axios.api";
 import { useState, useRef } from "react";
 import iconEdit from "./edit.png"
 import DeepPopup from "../deepPopup/DeepPopup";
+import SmallSkeleton from "../Skeleton/SkeletonSmall";
+import preloader from "./preloader.gif"
+import loadingPopup from "./loadingPopup.gif"
+
+
 
 const Popup = ({setWatcher, watcher}) => {
   const [data, setData] = useState([]);
@@ -14,7 +19,9 @@ const Popup = ({setWatcher, watcher}) => {
   const [title, setTitle] = useState("")
   const [deepPopup, setDeepPopup] = useState(false)
   const [deepPopupId, setDeepPopupId] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [preloader, setPreloader] = useState(true)
+
   let day = new Date().toISOString().slice(0, 10).split("-").reverse().join(".");
   let time = new Date().toLocaleTimeString();
 
@@ -26,7 +33,7 @@ const Popup = ({setWatcher, watcher}) => {
   useEffect(() => {
     instance
       .get(`/popup/${localStorage.getItem("popId")}`)
-      .then((data) => setData(data.data));
+      .then((data) => setData(data.data) & setIsLoading(false));
     
     const textarea = textareaRef.current;
     textarea.style.height = 'auto';
@@ -43,7 +50,7 @@ const Popup = ({setWatcher, watcher}) => {
         createdAdTime: time,
         notes: "notes"
       })
-      .then(() => setLocalWatcher(!localWatcher));
+      .then(() => setLocalWatcher(!localWatcher) & setPreloader(true));
   };
 
   const removePopup = (id) => {
@@ -92,9 +99,16 @@ const Popup = ({setWatcher, watcher}) => {
         value={addPopupTask}
         onChange={(e) => setAppPopupTask(e.target.value)}
       />
-      <button className={s.addPopup} onClick={addPopup} disabled={addPopupTask == ""}>Let's go</button>
+      <button className={s.addPopup} onClick={() => addPopup() & setPreloader(false) & setAppPopupTask("")} disabled={addPopupTask == ""}>Let's go</button>
 
-      {data.length !== 0 ? (
+    {
+     preloader? null : <span className={s.loadingPopup}> <img src={loadingPopup} width="35px"/> </span>
+    } 
+
+    {
+      isLoading
+      ? <SmallSkeleton/>
+      :  data.length !== 0 ? (
         data.map((e) => {
           return (
             <div>

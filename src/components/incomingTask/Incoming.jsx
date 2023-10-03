@@ -9,6 +9,10 @@ import calendar from "./calendar.png";
 import flag from "./flag.png"
 import dateFormat, { masks } from "dateformat";
 import { i18n } from "dateformat";
+import MyLoader from "../Skeleton/Skeleton";
+import done from "./done.png"
+import preloader from "./preloader.gif"
+
 
 
 const Incoming = () => {
@@ -21,6 +25,9 @@ const Incoming = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [id, setId] = useState("");
   const [li, setLi] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
+  const [isPreloader, setIsPreloader] = useState(false)
+
 
   i18n.dayNames = [
     "Sun",
@@ -79,7 +86,7 @@ const Incoming = () => {
   useEffect(() => {
     instance
       .get(`/transactions/incoming`)
-      .then((data) => setData(data.data))
+      .then((data) => setData(data.data) & setIsLoading(true) & setIsPreloader(false))
   }, [watcher]);
 
   const addCategory = () => {
@@ -132,103 +139,115 @@ const Incoming = () => {
 
   return (
     <div>
-      {/* инпут для написания задачи */}
       <input
-        className={s.input}
-        value={addTask}
-        onChange={(e) => setAddTask(e.target.value)}
-        placeholder="напиши свою задачу"
-      />
+          className={s.input}
+          value={addTask}
+          onChange={(e) => setAddTask(e.target.value)}
+          placeholder="напиши свою задачу"
+        />
+  
+        {/* кнопка для отправки задачи на сервер */}
+        <button
+          className={s.button}
+          disabled={addTask == ""}
+          onClick={() => addCategory() & setIsPreloader(true)}
+        >
+          добавить
+        </button>
+        
+        {
+          isPreloader? <img src={preloader} width="70px"/> :  <img src={done} width="70px"/>
+        }
 
-      {/* кнопка для отправки задачи на сервер */}
-      <button
-        className={s.button}
-        disabled={addTask == ""}
-        onClick={(e) => addCategory()}
-      >
-        добавить
-      </button>
+        <hr />
 
-      <hr />
-
-      {/* подтягивание title туду листа с localStorage */}
-      {/* <span className={s.mainTitle}> {localStorage.getItem("title")} </span> */}
-      <div className={s.wrapper}>
-        {/* метод map, для выставления задач  */}
-        {data.map((e) => {
-          return (
-            <div>
-              {/* начало отрисовывания Li-шки */}
-              <li
-                key={e.id}
-                className={li ? (popId == e.id ? s.li : s.li2) : s.li2}
-              >
-                {/* checkbox задачи */}
-                <input
-                  className={s.checkbox}
-                  type="checkbox"
-                  onClick={() => updateStatus(e.id, e.isCheck)}
-                />
-
-                {/* title туду листа с сервера а так же установка id Popup */}
-              {/* <span className={s.untill}>  {e.untill === null ? e.untill : e.untill.substring()}</span> */}
-                <span
-                  className={s.title}
-                  onClick={() => {
-                    setLi(!li);
-                    setPopId(e.id);
-                    setIsPopupOpen(!isPopupOpen);
-                    localStorage.setItem("popId", e.id);
-                    setId(e.id);
-                    setSwitch(false)
-                    localStorage.setItem("text", e.notes)
-                  }}
+      {
+        isLoading
+     ? 
+     <div>
+        
+  
+        {/* подтягивание title туду листа с localStorage */}
+        {/* <span className={s.mainTitle}> {localStorage.getItem("title")} </span> */}
+        <div className={s.wrapper}>
+          {/* метод map, для выставления задач  */}
+          {data.map((e) => {
+            return (
+              <div>
+                {/* начало отрисовывания Li-шки */}
+                <li
+                  key={e.id}
+                  className={li ? (popId == e.id ? s.li : s.li2) : s.li2}
                 >
-                  {e.title}
-                </span>
-
-                {/* кнопка удаления задачи из туду листа */}
-                <button
-                  className={s.removeButton}
-                  onClick={() =>removeTask(e.id, e.title, e.createdAd, e.createdAdTime)}
-                >
-                  x
-                </button>
-
-                {/* отображение года и даты в зависимости от текущей даты, сложная логика */}
-                <span className={s.untill}> {e.untill !== null? year !== dateFormat(e.untill, "yyyy")? <><img width="25px" src={flag} />  {dateFormat(e.untill, "yyyy")} </>  : <> <img width="25px" src={flag}/> {dateFormat(e.untill, "mmmm d")} </> : null  }  </span>
-
-
-                {/* Кнопка времени, при нажатии на которую происходит switch */}
-                {/* <span
-                  className={s.time}
-                  onClick={() => setSwitch(!switcH) & setSwitchId(e.id)}
-                >
-                  {switcH
-                    ? switchId == e.id
-                      ? e.createdAdTime
-                      : e.createdAd
-                    : e.createdAd}
-                </span> */}
-                {/* выдвижная навигация для Popup и сложный css для выделения фона при нажатии */}
-                {isPopupOpen &&
-                  (isPopupOpen ? (
-                    e.id == popId ? (
+                  {/* checkbox задачи */}
+                  <input
+                    className={s.checkbox}
+                    type="checkbox"
+                    onClick={() => updateStatus(e.id, e.isCheck)}
+                  />
+  
+                  {/* title туду листа с сервера а так же установка id Popup */}
+                {/* <span className={s.untill}>  {e.untill === null ? e.untill : e.untill.substring()}</span> */}
+                  <span
+                    className={s.title}
+                    onClick={() => {
+                      setLi(!li);
+                      setPopId(e.id);
+                      setIsPopupOpen(!isPopupOpen);
+                      localStorage.setItem("popId", e.id);
+                      setId(e.id);
+                      setSwitch(false)
+                      localStorage.setItem("text", e.notes)
+                    }}
+                  >
+                    {e.title}
+                  </span>
+  
+                  {/* кнопка удаления задачи из туду листа */}
+                  <button
+                    className={s.removeButton}
+                    onClick={() =>removeTask(e.id, e.title, e.createdAd, e.createdAdTime)}
+                  >
+                    x
+                  </button>
+  
+                  {/* отображение года и даты в зависимости от текущей даты, сложная логика */}
+                  <span className={s.untill}> {e.untill !== null? year !== dateFormat(e.untill, "yyyy")? <><img width="25px" src={flag} />  {dateFormat(e.untill, "yyyy")} </>  : <> <img width="25px" src={flag}/> {dateFormat(e.untill, "mmmm d")} </> : null  }  </span>
+  
+  
+                  {/* Кнопка времени, при нажатии на которую происходит switch */}
+                  {/* <span
+                    className={s.time}
+                    onClick={() => setSwitch(!switcH) & setSwitchId(e.id)}
+                  >
+                    {switcH
+                      ? switchId == e.id
+                        ? e.createdAdTime
+                        : e.createdAd
+                      : e.createdAd}
+                  </span> */}
+                  {/* выдвижная навигация для Popup и сложный css для выделения фона при нажатии */}
+                  {isPopupOpen &&
+                    (isPopupOpen ? (
+                      e.id == popId ? (
+                      
+                        <div>
+                          {switcH?  <Calendary id={e.id} data={e.untill} watcher={watcher} setWatcher={setWatcher}/>  :  <Popup setWatcher={setWatcher} watcher={watcher}/>}    
+                           <img className={s.calendar} onClick={() =>setSwitch(!switcH) } width="35px" src={calendar}/> 
+                           {e.untill && dateFormat(e.untill, " dddd, mmmm d") } 
+                           {e.untill && <span className={s.clear2} onClick={() => clearDate(e.id)}>clear</span>}
+                        </div>
+                      ) : null
+                    ) : null)}
                     
-                      <div>
-                        {switcH?  <Calendary id={e.id} data={e.untill} watcher={watcher} setWatcher={setWatcher}/>  :  <Popup setWatcher={setWatcher} watcher={watcher}/>}    
-                         <img className={s.calendar} onClick={() =>setSwitch(!switcH) } width="35px" src={calendar}/> 
-                         {e.untill && dateFormat(e.untill, " dddd, mmmm d") } 
-                         {e.untill && <span className={s.clear2} onClick={() => clearDate(e.id)}>clear</span>}
-                      </div>
-                    ) : null
-                  ) : null)}
-                  
-              </li>
-            </div>
-          );
-        })}
-      </div>                
+                </li>
+              </div>
+            );
+          })}
+          </div>    
+        </div>     
+      : <span className={s.skeleton}><MyLoader/> </span>
+      }
     </div>
   );
 };

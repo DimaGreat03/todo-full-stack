@@ -1,0 +1,77 @@
+.wrapper {
+  color: rgb(255, 255, 255);
+  margin-left: 45px;
+  margin-top: -15px;
+  margin-bottom: 10px;
+  width: auto;
+}
+
+.li {
+  color: rgb(254, 254, 254);
+  margin-top: -10px;
+  line-height: 50px;
+}
+.li:hover {
+  background-color: rgb(52, 60, 80);
+}
+
+.input {
+  margin-right: 20px;
+}
+
+.editInput {
+  min-width: 250px;
+  font-size: 21px;
+  margin-left: 35px;
+  background-color: #252931;
+  color: white;
+  outline: none;
+}
+
+.popupButton {
+  color: rgb(97, 97, 97);
+  font-size: 22px;
+  margin-left: 10px;
+}
+
+.popupButton:hover {
+   color: aliceblue;
+}
+
+.addPopup {
+    background-color: rgb(17, 147, 240);
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.textarea {
+  background-color: #252931;
+  color: rgb(139, 139, 139);
+  border-style: none;
+  font-size: 17px;
+  width: 500px;
+  outline: none;
+  margin-bottom: -10px;
+  margin-left: 40px;
+}
+
+.buttonDone {
+  margin-left: 10px;
+  border-radius: 7px;
+  padding: 5px;
+  color: white;
+  background-color: #252931;
+}
+.buttonDone:hover{
+  border-style: solid;
+  border-color: rgb(117, 117, 117);
+}
+
+.iconEdit {
+  margin-left: 5px;
+  vertical-align: text-top;
+}

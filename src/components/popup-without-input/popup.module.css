@@ -1,0 +1,39 @@
+
+
+
+
+.wrapper {
+    color: rgb(255, 255, 255);
+    margin-left: 45px;
+}
+
+.li {
+    color: rgb(254, 254, 254);
+    line-height: 38px;
+    margin-bottom: 10px;
+}
+.li:hover {
+    color: rgb(254, 254, 254);
+    background-color: rgb(109, 109, 109);
+    border-radius: 8px;
+
+}
+
+.input {
+    margin-right: 20px;
+}
+.input:hover{
+    background-color: antiquewhite;
+}
+
+
+.textarea {
+    background-color: #252931;
+    color: rgb(139, 139, 139);
+    border-style: none;
+    font-size: 17px;
+    width: 500px;
+    outline: none;
+    margin-bottom: 0px;
+    margin-top: 10px;
+  }

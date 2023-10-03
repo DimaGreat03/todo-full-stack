@@ -1,0 +1,52 @@
+.Auth {
+  width: 500px;
+  height: 500px;
+  border-style: solid;
+  border-color: aliceblue;
+  border-radius: 7px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  background: linear-gradient(#1c212b, #13171e);
+  border-width: 1px;
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  font-family: 'roboto';
+}
+
+.input1 {
+  margin-top: 30px;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.input {
+  font-size: 25px;
+}
+
+.span {
+  margin-top: 30px;
+  color: white;
+}
+
+.zdes {
+  color: red;
+  cursor: pointer;
+}
+
+.button {
+  font-size: 20px;
+  margin-top: 35px;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: #313a4c;
+  color: white;
+}
+
+.button:hover {
+  color: rgb(255, 255, 255);
+  background-color: #1e242f;
+  border-style: solid;
+  border-color: white;
+}

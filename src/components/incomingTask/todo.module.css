@@ -1,0 +1,137 @@
+.wrapper {
+  color: rgb(230, 230, 230);
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 20px;
+  font-size: 23px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  line-height: 55px;
+  margin-bottom: 50px;  
+}
+
+.li {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 0.1px;
+  background-color: #252931;
+  border-radius: 5px;
+  list-style-type: none;  
+}
+
+.li2{
+  cursor: pointer;
+  list-style-type: none;
+}
+.li2:hover {
+  border-radius: 8px;
+  background-color: rgb(52, 60, 80);
+}
+
+.title {
+  margin-left: 10px;
+}
+
+.checkbox {
+  background-color: red;
+}
+
+.input {
+  margin: 30px 10px 30px 50px;
+  font-size: 18px;
+  width: 500px;
+  height: 30px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgb(255, 255, 255);
+
+  .placaholder {
+    color: red;
+  }
+}
+
+.button {
+  padding: 10px;
+  font-size: 17px;
+  border-radius: 7px;
+  background-color: darkslategrey;
+  color: white;
+}
+.button:hover {
+  border-style: solid;
+  border-color: white;
+  border-width: 0.5px;
+}
+
+.removeButton {
+  font-size: 18px;
+  background-color: rgb(69, 102, 102);
+  color: white;
+  padding: 6px;
+  border-radius: 7px;
+  margin-bottom: 5px;
+  padding: 5px 10px 5px 10px;
+}
+.removeButton:hover {
+  color: rgb(190, 0, 0);
+  cursor: pointer;
+}
+
+.time {
+  color: rgb(255, 255, 255);
+  float: right;
+  margin: 0px 10px 0px 0px;
+  font-size: 25px;
+  cursor: pointer;
+  font-family: "Times New Roman", Times, serif;
+  margin-top: 0px;
+}
+.time:hover {
+  color: rgb(242, 255, 0);
+}
+
+.mainTitle {
+  color: white;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.h1 {
+  color: white;
+  margin-left: 150px;
+  font-size: 40px
+}
+
+.category {
+  font-size: 14px;
+  color: rgb(153, 152, 152);
+  margin: -30px 0px -10px 30px;
+}
+
+.untill {
+  float: right;
+  color: rgb(168, 168, 168);
+  margin-right: 10px;
+}
+
+.calendar {
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.clearCalendar {
+  margin: 0px 0px 0px 10px;
+}
+
+.clear2 {
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: #d3d3d3;
+  border-radius: 5px;
+  color: rgb(139, 139, 139);
+  padding: 6px;
+  margin-left: 15px;
+}

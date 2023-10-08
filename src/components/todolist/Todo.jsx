@@ -87,7 +87,7 @@ const Todo = () => {
         untill: null,
         isDeadLine: false,
         lastCheck: false,
-        incomingTask: false
+        incomingTask: false,
       })
       .then((data) => setWatcherT(!watcherT));
   };

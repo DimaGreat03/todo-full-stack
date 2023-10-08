@@ -3,20 +3,21 @@ import s from "./zhurnal.module.css"
 import { instance } from "../api/axios.api";
 import useSound from "use-sound";
 import sound from "./assets/close.mp3";
-import PopupWithoutInput from "../popup-without-input/PopupWithoutInput";
 import dateFormat from "dateformat";
+import Popup from "../popup/Popup";
 
 
 const Zhurnal = () => {
   const [data, setData] = useState([]);
   const [watcher, setWatcher] = useState(false);
-  const [switchId, setSwitchId] = useState("");
   const [switcH, setSwitch] = useState(false);
   const [popId, setPopId] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [li, setLi] = useState(false);
   const [inputId, setInputId] = useState("")
   const [checkInput, setCheckInput] = useState(true)
+  const [selectedIds, setSelectedIds] = useState([]);
+
 
   const [play] = useSound(sound);
 
@@ -43,6 +44,26 @@ const Zhurnal = () => {
     }, 200);
   };
 
+  const removeMany = () => {
+    instance
+     .delete("/transactions/delete", {
+       data: {ids: selectedIds}
+     })
+     .then((data) => setWatcher(!watcher))
+     .catch(e => console.log(e))
+ };
+
+  function handleCheckboxChange(id) {
+
+    if(selectedIds.includes(id)) {
+      let newOne = selectedIds.filter(e => e !== id)
+      setSelectedIds(newOne)
+    } else {
+      selectedIds.push(id)
+    }
+    setWatcher(!watcher)
+  }
+
 
   return (
     <div>
@@ -52,6 +73,12 @@ const Zhurnal = () => {
       <hr />
 
       <div className={s.wrapper}>
+      <span className={!selectedIds.length? s.buttonDeleteForever : s.buttonDeleteForeverStart  } 
+                onClick={() => removeMany() &setSelectedIds([])}
+                disabled={!selectedIds.length}
+                > 
+                Удалить навсегда 
+        </span>
         {/* метод map, для выставления задач  */}
         {data.map((e) => {
           return (
@@ -71,7 +98,16 @@ const Zhurnal = () => {
                    }
                  />
 
-                  {/* отрисовка title  */}
+             {/* input для выделения объектов с последующим удалением безвозвратно */}
+                <input      
+                  value={e.id}
+                  type="radio"
+                  onChange={() => {}}
+                  checked={selectedIds.includes(e.id)}
+                  onClick={() => handleCheckboxChange(e.id)}
+                />  
+                                  
+                 {/* отрисовка title  */}
                 <span
                   className={s.title}
                   onClick={() => {
@@ -82,15 +118,14 @@ const Zhurnal = () => {
                     localStorage.setItem("text", e.notes)
                   }}
                 >
-                  {e.title}
+                  {e.title} 
                   <div className={s.category}>{e.category? e.category.title : "incoming"}</div>
                 </span>
-
 
                 {/* Кнопка времени */}
                 <span
                   className={s.time}
-                  onClick={() => setSwitch(!switcH) & setSwitchId(e.id)}
+                  onClick={() => setSwitch(!switcH)}
                 >
                   {dateFormat(e.createdAt, "mmmm d")}
                 </span>
@@ -99,7 +134,7 @@ const Zhurnal = () => {
                   (isPopupOpen ? (
                     e.id == popId ? (
                       <div>
-                        <PopupWithoutInput />
+                        <Popup setWatcher={setWatcher} watcher={watcher}/>
                       </div>
                     ) : null
                   ) : null)}

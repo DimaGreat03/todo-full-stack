@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import s from "./todo.module.css";
 import { instance } from "../api/axios.api";
-import useSound from "use-sound";
-import sound from "./close.mp3";
 import Popup from "../popup/Popup";
 import Calendary from "../calendar/Calendar";
 import calendar from "./calendar.png";
 import flag from "./flag.png"
-import dateFormat, { masks } from "dateformat";
+import dateFormat from "dateformat";
 import { i18n } from "dateformat";
 import MyLoader from "../Skeleton/Skeleton";
-import done from "./done.png"
 import preloader from "./preloader.gif"
+import done from "./accept.png"
+
 
 
 
@@ -19,7 +18,6 @@ const Incoming = () => {
   const [data, setData] = useState([]);
   const [watcher, setWatcher] = useState(false);
   const [addTask, setAddTask] = useState("");
-  const [switchId, setSwitchId] = useState("");
   const [switcH, setSwitch] = useState(false);
   const [popId, setPopId] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -27,7 +25,16 @@ const Incoming = () => {
   const [li, setLi] = useState(false);
   const [isLoading, setIsLoading] = useState(false)
   const [isPreloader, setIsPreloader] = useState(false)
+  const [button_id, setButton_id] = useState("")
+  const [selectedIds, setSelectedIds] = useState([]);
+  const [iconId, setIconId] = useState("")
 
+
+  useEffect(() => {
+    instance
+      .get(`/transactions/incoming`)
+      .then((data) => setData(data.data) & setIsLoading(true) & setIsPreloader(false))
+  }, [watcher]);
 
   i18n.dayNames = [
     "Sun",
@@ -37,7 +44,7 @@ const Incoming = () => {
     "Thu",
     "Fri",
     "Sat",
-    "воскресенте",
+    "воскресенье",
     "понедельник",
     "вторник",
     "среда",
@@ -72,22 +79,7 @@ const Incoming = () => {
     "Декабрь",
   ];
   
-
-  const [play] = useSound(sound);
-  let day = new Date()
-
-  const date = (data) => {
-    return dateFormat(data, "dddd, mmmm d, yyyy")
-  }
-
   const year = dateFormat(new Date(), "yyyy")
-
-
-  useEffect(() => {
-    instance
-      .get(`/transactions/incoming`)
-      .then((data) => setData(data.data) & setIsLoading(true) & setIsPreloader(false))
-  }, [watcher]);
 
   const addCategory = () => {
     instance
@@ -101,7 +93,7 @@ const Incoming = () => {
         isDeadLine: false,
         lastCheck: false,
         incomingTask: true,
-        notes: "notes"
+        notes: ""
       })
       .then((data) => setWatcher(!watcher));
   };
@@ -115,7 +107,7 @@ const Incoming = () => {
           isDone: true,
           incomingTask: false
         })
-        .then((data) => setWatcher(!watcher) & play());
+        .then((data) => setWatcher(!watcher));
     }, 250);
   };
 
@@ -137,8 +129,63 @@ const Incoming = () => {
       .then(() => setWatcher(!watcher));
   }
 
+  const removeMany = () => {
+     instance
+      .delete("/transactions/delete", {
+        data: {ids: selectedIds}
+      })
+      .then((data) => setWatcher(!watcher))
+      .catch(e => console.log(e))
+  };
+
+  const setDateForMainDiv = (untill) => {
+    return (
+       Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1) <= 0
+        ? untill? <span className={s.untill}>сегодня</span> : null
+        : <>
+          <span className={s.untill}> {untill !== null
+          ? year !== dateFormat(untill, "yyyy")
+          ? <><img width="25px" src={flag} />  {dateFormat(untill, "yyyy")} </>  
+          : <> <img width="25px" src={flag}/> {dateFormat(untill, "mmmm d")} </> 
+          : null  }  </span>
+        </>
+    )
+  }
+
+  const setDateForPopup = (untill) => {
+    return (
+        Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1) <= 0
+        ? null 
+        : dateFormat(untill, " dddd, mmmm d")
+    )
+  }
+
+  const setDateForHowManyDaysLeft = (untill) =>{
+    return (
+        Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1) <= 0
+         ? untill? "сегодня" : "you can add dead line" 
+         : <> осталось дней: {Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1)}</>
+    )
+  }
+
+  function handleCheckboxChange(id) {
+
+    if(selectedIds.includes(id)) {
+      let newOne = selectedIds.filter(e => e !== id)
+      setSelectedIds(newOne)
+    } else {
+      selectedIds.push(id)
+    }
+    setWatcher(!watcher)
+  }
+
+
+
   return (
     <div>
+      
+    <div className={s.h1}>Входящие задачи</div>
+    
       <input
           className={s.input}
           value={addTask}
@@ -155,41 +202,51 @@ const Incoming = () => {
           добавить
         </button>
         
-        {
-          isPreloader? <img src={preloader} width="70px"/> :  <img src={done} width="70px"/>
-        }
+        {/* отображение идущего человечка при отправки задачи */}
+        {isPreloader && <img src={preloader} width="50px"/>}
 
         <hr />
 
+         {/* кнопка удаления навсегда, мультиудаление */}
+        <span className={!selectedIds.length? s.buttonDeleteForever : s.buttonDeleteForeverStart  } 
+                onClick={() => removeMany() &setSelectedIds([])}
+                disabled={!selectedIds.length}
+                > 
+                Удалить навсегда 
+        </span>
       {
         isLoading
      ? 
      <div>
-        
-  
-        {/* подтягивание title туду листа с localStorage */}
-        {/* <span className={s.mainTitle}> {localStorage.getItem("title")} </span> */}
+
         <div className={s.wrapper}>
+
           {/* метод map, для выставления задач  */}
           {data.map((e) => {
             return (
-              <div>
-                {/* начало отрисовывания Li-шки */}
-                <li
-                  key={e.id}
-                  className={li ? (popId == e.id ? s.li : s.li2) : s.li2}
-                >
+              <div key={e.id}>
+
+                {/* начало отрисовывания Li-шки */}                
+                <li className={li ? (popId == e.id ? s.li : s.li2) : s.li2}>
+
                   {/* checkbox задачи */}
-                  <input
-                    className={s.checkbox}
-                    type="checkbox"
-                    onClick={() => updateStatus(e.id, e.isCheck)}
+                  <img className={iconId !== e.id ? s.iconDone : s.iconDone2} 
+                       src={done} width="25px"
+                       onClick={() => updateStatus(e.id, e.isCheck) & setIconId(e.id)}
                   />
-  
+
+    {/* инпут для выделения множества объектов с последующим удалением */}
+                    <input      
+                      value={e.id}
+                      type="radio"
+                      onChange={() => {}}
+                      checked={selectedIds.includes(e.id)}
+                      onClick={() => handleCheckboxChange(e.id)}
+                     />  
+
                   {/* title туду листа с сервера а так же установка id Popup */}
-                {/* <span className={s.untill}>  {e.untill === null ? e.untill : e.untill.substring()}</span> */}
                   <span
-                    className={s.title}
+                    className={e.id !== button_id? s.title : s.titleProcess}
                     onClick={() => {
                       setLi(!li);
                       setPopId(e.id);
@@ -205,41 +262,44 @@ const Incoming = () => {
   
                   {/* кнопка удаления задачи из туду листа */}
                   <button
-                    className={s.removeButton}
-                    onClick={() =>removeTask(e.id, e.title, e.createdAd, e.createdAdTime)}
+                    className={e.id !== button_id ? s.removeButton : s.removeButtonProcess}
+                    onClick={() =>removeTask(e.id, e.title, e.createdAd, e.createdAdTime) & setButton_id(e.id)}
                   >
                     x
                   </button>
   
-                  {/* отображение года и даты в зависимости от текущей даты, сложная логика */}
-                  <span className={s.untill}> {e.untill !== null? year !== dateFormat(e.untill, "yyyy")? <><img width="25px" src={flag} />  {dateFormat(e.untill, "yyyy")} </>  : <> <img width="25px" src={flag}/> {dateFormat(e.untill, "mmmm d")} </> : null  }  </span>
-  
-  
-                  {/* Кнопка времени, при нажатии на которую происходит switch */}
-                  {/* <span
-                    className={s.time}
-                    onClick={() => setSwitch(!switcH) & setSwitchId(e.id)}
-                  >
-                    {switcH
-                      ? switchId == e.id
-                        ? e.createdAdTime
-                        : e.createdAd
-                      : e.createdAd}
-                  </span> */}
-                  {/* выдвижная навигация для Popup и сложный css для выделения фона при нажатии */}
+                  {/* отображение года и даты в правом углу колонки в зависимости от текущей даты, сложная логика */}
+                 {setDateForMainDiv(e.untill)}
+               
+               {/* описание логики при открытии Попапа */}
                   {isPopupOpen &&
                     (isPopupOpen ? (
                       e.id == popId ? (
-                      
                         <div>
-                          {switcH?  <Calendary id={e.id} data={e.untill} watcher={watcher} setWatcher={setWatcher}/>  :  <Popup setWatcher={setWatcher} watcher={watcher}/>}    
-                           <img className={s.calendar} onClick={() =>setSwitch(!switcH) } width="35px" src={calendar}/> 
-                           {e.untill && dateFormat(e.untill, " dddd, mmmm d") } 
+
+                {/* добавлении switch логики при которой будет 
+                     отображатьс календарь или Попап */}
+                          {switcH
+                            ?  <Calendary id={e.id} data={e.untill} watcher={watcher} setWatcher={setWatcher}/>  
+                            :  <Popup setWatcher={setWatcher} watcher={watcher}/>
+                          } 
+
+                    {/* картинка календаря при раскрытии попапа */}
+                         <img className={s.calendar} onClick={() =>setSwitch(!switcH) } width="35px" src={calendar}/> 
+                      
+                           {/* отображение даты при раскрытии попапа если есть дедлайн */}
+                           {setDateForPopup(e.untill)}
+
+                            {/*   кнопка очистки календаря */}
                            {e.untill && <span className={s.clear2} onClick={() => clearDate(e.id)}>clear</span>}
+
+                          {/* отображение сколько дней осталось до дедлайна в самом низу попапа */}
+                           <div className={s.left}>
+                              {setDateForHowManyDaysLeft(e.untill)}
+                           </div>
                         </div>
                       ) : null
                     ) : null)}
-                    
                 </li>
               </div>
             );

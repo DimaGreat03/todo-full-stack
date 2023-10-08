@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Route, Routes, useNavigate } from "react-router";
 import "./App.css";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
@@ -17,6 +17,7 @@ function App() {
   const [isAuth, setIsAuth] = useState(false);
   const [todoId, setId] = useState("");
   const getUserFromLocalStorage = localStorage.getItem("user");
+  const navigate = useNavigate();
 
   const checkAuth = async () => {
     const token = await localStorage.getItem("token");
@@ -26,11 +27,13 @@ function App() {
         if (data) {
           setIsAuth(true);
         } else {
-          setIsAuth(false);
+          console.log("нету токена");
         }
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
+      console.log("mistake")
+      navigate("/auth")
     }
   };
 
@@ -42,16 +45,22 @@ function App() {
     <div>
       <Header isAuth={isAuth} setIsAuth={setIsAuth} />
       <Routes>
-        <Route element={<PrivateRouts isAuth={isAuth} />}>
-          <Route path="/main" element={<Main setId={setId} />} />
-          <Route path="/deleted" element={<DeletedTasks />} />
-          <Route path={`todo:${getUserFromLocalStorage}`} element={<Todo/>} />
-          <Route path="/zhurnal" element={<Zhurnal />} />
-          <Route path="/dead-line" element={<DeadLine/>}/>
-          <Route path="/incoming" element={<Incoming/>}/>
-        </Route>
-        <Route path="/initial" element={<LoadingPage />} />
-        <Route path="/auth" element={<Auth setIsAuth={setIsAuth} />} />
+        {isAuth 
+          ? 
+          <Route element={<PrivateRouts isAuth={isAuth} />}>
+            <Route path="/main" element={<Main setId={setId} />} />
+            <Route path="/deleted" element={<DeletedTasks />} />
+            <Route path={`todo:${getUserFromLocalStorage}`} element={<Todo />}/>
+            <Route path="/zhurnal" element={<Zhurnal />} />
+            <Route path="/dead-line" element={<DeadLine />} />
+            <Route path="/incoming" element={<Incoming />} />
+          </Route>
+          : 
+          <>
+            <Route path="/initial" element={<LoadingPage />} />
+            <Route path="/auth" element={<Auth setIsAuth={setIsAuth} />} />
+          </>
+        }
       </Routes>
     </div>
   );

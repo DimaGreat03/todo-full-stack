@@ -1,10 +1,9 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import s from "./header.module.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 
 const Header = ({isAuth, setIsAuth}) => {
-  const [currentPage, setCurrentPage] = useState(localStorage.getItem('currentPage'))
 
   let navigate = useNavigate()
   let removeToken = () => {
@@ -13,9 +12,6 @@ const Header = ({isAuth, setIsAuth}) => {
     navigate("/")
   }
 
-  useEffect(() => {
-    console.log('change localStorage')
-  }, [localStorage.getItem("currentPage")])
 
   return (
 
@@ -29,6 +25,7 @@ const Header = ({isAuth, setIsAuth}) => {
            <NavLink to="/zhurnal" className={active => active.isActive? s.currentButton : s.button}>Журнал</NavLink>
            <NavLink to="/dead-line" className={active => active.isActive? s.currentButton : s.button}>Календарь</NavLink>
            <NavLink to="/incoming" className={active => active.isActive? s.currentButton : s.button}>Входящие</NavLink>
+           <NavLink to="/today" className={active => active.isActive? s.currentButton : s.button}>Сегодня</NavLink>
         </div>
         : 
         <NavLink to="/auth"> <button className={s.button}> авторизация</button></NavLink>

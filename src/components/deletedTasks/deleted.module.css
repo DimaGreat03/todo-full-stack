@@ -108,3 +108,22 @@
   margin: -20px 0px -10px 30px;
 }
 
+.buttonDeleteForever {
+  margin-left: 50px;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  color: rgb(109, 109, 109);
+  cursor:  default;
+}
+
+.buttonDeleteForeverStart {
+  margin-left: 50px;
+  margin-top: 5px;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  color: rgb(255, 128, 0);
+  cursor: pointer;
+}
+

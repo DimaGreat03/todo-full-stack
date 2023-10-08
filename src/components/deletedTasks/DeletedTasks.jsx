@@ -3,7 +3,7 @@ import s from "./deleted.module.css";
 import { instance } from "../api/axios.api";
 import useSound from "use-sound";
 import close from "./assets/close.mp3";
-import PopupWithoutInput from "../popup-without-input/PopupWithoutInput";
+import Popup from "../popup/Popup"
 import dateFormat from "dateformat";
 
 const DeletedTasks = () => {
@@ -15,6 +15,9 @@ const DeletedTasks = () => {
   const [li, setLi] = useState(false);
   const [inputId, setInputId] = useState("")
   const [checkInput, setCheckInput] = useState(true)
+  const [selectedIds, setSelectedIds] = useState([]);
+
+
 
   useEffect(() => {
     instance
@@ -38,6 +41,26 @@ const DeletedTasks = () => {
       .then(() => playDeleteTask());
   };
 
+  function handleCheckboxChange(id) {
+
+    if(selectedIds.includes(id)) {
+      let newOne = selectedIds.filter(e => e !== id)
+      setSelectedIds(newOne)
+    } else {
+      selectedIds.push(id)
+    }
+    setWatcher(!watcher)
+  }
+
+  const removeMany = () => {
+    instance
+     .delete("/transactions/delete", {
+       data: {ids: selectedIds}
+     })
+     .then((data) => setWatcher(!watcher))
+     .catch(e => console.log(e))
+ };
+
   return (
     <div>
 
@@ -46,6 +69,12 @@ const DeletedTasks = () => {
       <hr />
 
       <div className={s.wrapper}>
+      <span className={!selectedIds.length? s.buttonDeleteForever : s.buttonDeleteForeverStart  } 
+                onClick={() => removeMany() &setSelectedIds([])}
+                disabled={!selectedIds.length}
+                > 
+                Удалить навсегда 
+        </span>
         {/* метод map, для выставления задач  */}
         {tasks.map((e) => {
           return (
@@ -65,6 +94,15 @@ const DeletedTasks = () => {
                    }
                  />
 
+                  {/*  мультиудаление */}
+                  <input      
+                    value={e.id}
+                    type="radio"
+                    onChange={() => {}}
+                    checked={selectedIds.includes(e.id)}
+                    onClick={() => handleCheckboxChange(e.id)}
+                   />  
+
                   {/* отрисовка title  */}
                 
                 <span
@@ -73,7 +111,8 @@ const DeletedTasks = () => {
                     setLi(!li);
                     setPopId(e.id);
                     setIsPopupOpen(!isPopupOpen);
-                    localStorage.setItem("popupId", e.id);
+                    localStorage.setItem("popId", e.id);
+                    localStorage.setItem("text", e.notes)
                   }}
                 >
                   {e.title} 
@@ -91,7 +130,7 @@ const DeletedTasks = () => {
                   (isPopupOpen ? (
                     e.id == popId ? (
                       <div>
-                        <PopupWithoutInput />
+                        <Popup setWatcher={setWatcher} watcher={watcher}/>
                       </div>
                     ) : null
                   ) : null)}

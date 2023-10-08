@@ -6,6 +6,7 @@
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     line-height: 55px;
     margin-bottom: 50px;  
+    line-height: 45px;
   }
   
   .li {
@@ -14,7 +15,7 @@
     border-width: 0.1px;
     background-color: #252931;
     border-radius: 5px;
-    list-style-type: none;  
+    list-style-type: none;
   }
   
   .li2{
@@ -31,24 +32,11 @@
   }
   
   .checkbox {
+    vertical-align: middle;
     background-color: red;
     height: 20px;
   }
   
-  .input {
-    margin: 30px 10px 30px 50px;
-    font-size: 18px;
-    width: 500px;
-    height: 30px;
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 0.5px;
-    border-color: rgb(255, 255, 255);
-  
-    .placaholder {
-      color: red;
-    }
-  }
   
   .button {
     padding: 10px;
@@ -103,13 +91,13 @@
   .h1 {
     color: white;
     margin-left: 150px;
-    font-size: 40px
+    font-size: 35px
   }
   
   .category {
-    font-size: 14px;
+    font-size: 15px;
     color: rgb(153, 152, 152);
-    margin-top: -25px;
+    margin-top: -15px;
     margin-left: 30px;
     margin-bottom: 10px;
   }
@@ -126,7 +114,8 @@
   .line {
      border-width: 0.1px;
      border-color: rgb(73, 73, 73);
-     margin-top: -15px;
+     background-color: #7e7e7e;
+    margin-top: -5px;
   }
 
   .untillDay {

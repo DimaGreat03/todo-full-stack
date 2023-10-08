@@ -9,7 +9,7 @@ const DeepPopup = ({setLocalWatcher, localWatcher}) => {
     const [value, setValue] = useState(localStorage.getItem("deepNotes"));
     const textareaRef = useRef(null);
 
-    const updateNotes = (id) => {
+    const updateNotes = () => {
         instance
           .patch(`/popup/${localStorage.getItem("deepId")}`, {
             notes: value,

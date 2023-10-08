@@ -1,8 +1,8 @@
 import "./Calendar.css";
 import Calendar from "react-calendar";
 import { instance } from "../api/axios.api";
-import { useState } from "react";
 import { format } from "date-fns";
+import dateFormat from "dateformat";
 
 const Calendary = ({ id, data, watcher, setWatcher }) => {
 
@@ -19,7 +19,7 @@ const Calendary = ({ id, data, watcher, setWatcher }) => {
   return (
     <div>
       <Calendar 
-              value={data} 
+              value={Math.floor((new Date(data) - new Date()) / (24 * 60 * 60 * 1000)+1) <= 0 ? dateFormat(new Date(), "yyyy-mm-dd") : data} 
               onClickDay={(e) => setUntill(format(e, "yyyy.MM.dd"))}
               minDate={new Date()}
               />

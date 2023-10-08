@@ -5,8 +5,8 @@ import { useState, useRef } from "react";
 import iconEdit from "./edit.png"
 import DeepPopup from "../deepPopup/DeepPopup";
 import SmallSkeleton from "../Skeleton/SkeletonSmall";
-import preloader from "./preloader.gif"
 import loadingPopup from "./loadingPopup.gif"
+import haveIcon from "./book.png"
 
 
 
@@ -21,9 +21,11 @@ const Popup = ({setWatcher, watcher}) => {
   const [deepPopupId, setDeepPopupId] = useState("")
   const [isLoading, setIsLoading] = useState(true)
   const [preloader, setPreloader] = useState(true)
+  const [button_id, setButton_id] = useState("")
 
-  let day = new Date().toISOString().slice(0, 10).split("-").reverse().join(".");
-  let time = new Date().toLocaleTimeString();
+
+  // let day = new Date().toISOString().slice(0, 10).split("-").reverse().join(".");
+  // let time = new Date().toLocaleTimeString();
 
   // для textarea стили
   const [value, setValue] = useState(localStorage.getItem("text"));
@@ -46,9 +48,9 @@ const Popup = ({setWatcher, watcher}) => {
         title: addPopupTask,
         transaction: localStorage.getItem("popId"),
         isCheck: false,
-        createdAd: day,
-        createdAdTime: time,
-        notes: "notes"
+        // createdAd: day,
+        // createdAdTime: time,
+        notes: ""
       })
       .then(() => setLocalWatcher(!localWatcher) & setPreloader(true));
   };
@@ -81,6 +83,9 @@ const Popup = ({setWatcher, watcher}) => {
       .then(() => setLocalWatcher(!localWatcher));
   };
 
+
+
+
   return (
     <div className={s.wrapper}>
       <div>
@@ -95,6 +100,7 @@ const Popup = ({setWatcher, watcher}) => {
     />
       </div>
       <input
+        className={s.inputA}
         placeholder="добавь под/задачу"
         value={addPopupTask}
         onChange={(e) => setAppPopupTask(e.target.value)}
@@ -111,27 +117,33 @@ const Popup = ({setWatcher, watcher}) => {
       :  data.length !== 0 ? (
         data.map((e) => {
           return (
-            <div>
+            <div key={e.id}>
               {
                 popId == e.id && edit
                 ? <span>
                     <input className={s.editInput} value={title} onChange={(e) => setTitle(e.target.value)}/> 
                     <button className={s.buttonDone} onClick={() => setEdit(false) & updateTitle(e.id)}>Done</button>
-                  </span> : <li className={s.li}>
-                <input
-                  className={s.input}
-                  type="checkbox"
-                  checked={e.isCheck}
-                  onClick={() => updateStatus(e.id, e.isCheck)}
-                />
-                <span onClick={() => setDeepPopup(!deepPopup) & setDeepPopupId(e.id) & localStorage.setItem("deepNotes", e.notes) & localStorage.setItem("deepId", e.id)}> {e.title} </span>
-                <span className={s.popupButton} onClick={() => removePopup(e.id)}> X </span>
-                <img className={s.iconEdit} src={iconEdit} width="25px" onClick={() => setEdit(true) & setPopId(e.id) & setTitle(e.title)} />
-                
-              </li>
+                  </span> 
+                : <ul className={s.ul}>
+                     <li className={s.li}>
+                       <input
+                        className={s.input}
+                        type="checkbox"
+                        checked={e.isCheck}
+                        onChange={() => {}}
+                        onClick={() => updateStatus(e.id, e.isCheck)}
+                      />
+                     <span className={e.isCheck? s.titleProcess : undefined} onClick={() => setDeepPopup(!deepPopup) & setDeepPopupId(e.id) & localStorage.setItem("deepNotes", e.notes) & localStorage.setItem("deepId", e.id)}> {e.title} {e.notes !== "" && <img src={haveIcon} className={e.isCheck? s.glas :s.glasActive}/>} </span>
+                     <span className={e.id !== button_id? s.popupButton : s.popupButtonProcess} onClick={() => removePopup(e.id) & setButton_id(e.id)}> X </span>
+                    <img className={s.iconEdit} src={iconEdit} width="25px" onClick={() => setEdit(true) & setPopId(e.id) & setTitle(e.title)} />
+                     </li>
+                     </ul>
               }
               {
-                  deepPopup? (deepPopupId == e.id? <DeepPopup setLocalWatcher={setLocalWatcher} localWatcher={localWatcher} /> : false) : false
+                deepPopup? 
+                (deepPopupId == e.id? <DeepPopup setLocalWatcher={setLocalWatcher} localWatcher={localWatcher} /> 
+                    : undefined ) 
+                    : undefined
                 }
               
             </div>

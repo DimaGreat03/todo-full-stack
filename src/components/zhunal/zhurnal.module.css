@@ -2,7 +2,7 @@
   color: rgb(230, 230, 230);
   margin-left: 80px;
   margin-right: 80px;
-  margin-top: 20px;
+  margin-top: -10px;
   font-size: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 55px;
@@ -106,7 +106,29 @@
 
 .category {
   font-size: 14px;
-  color: rgb(153, 152, 152);
-  margin: -30px 0px -10px 30px;
+  color: rgb(111, 111, 111);
+  margin: -30px 0px -10px 50px;
+}
+
+.buttonDeleteForever {
+  margin-left: 40px;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  color: rgb(109, 109, 109);
+  cursor:  default;
+}
+
+.buttonDeleteForeverStart {
+  margin-left: 40px;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  color: rgb(255, 128, 0);
+  cursor: pointer;
+}
+
+.buttonDeleteForeverStart:hover {
+  background-color: #414761;
 }
 

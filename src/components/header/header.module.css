@@ -53,3 +53,16 @@
 
   }
 }
+
+.buttonDel {
+  @media (max-width: 415px) {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    float: none;
+    margin: 10px 10px 0px 10px;
+    font-size: 14px;
+    min-width: 150px;
+    border-color: rgb(97, 128, 164);
+  }
+}

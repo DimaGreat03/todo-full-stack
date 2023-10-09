@@ -28,20 +28,18 @@
 
 .currentButton {
   float: right;
-  color: rgb(253, 253, 253);
+  color: red;
   margin-top: 30px;
   margin-right: 15px;
   font-size: 21px;
   padding: 10px;
   border-radius: 7px;
-  background-color: #1c212b;
+  border-width: 1px;
   border-style: solid;
   text-decoration: none;
-  border-width: 1px;
-  border-color: rgb(29, 110, 148);
+  border-color: azure;
   
   @media (max-width: 415px) {
-    text-align: center;
     display: flex;
     flex-direction: column;
     float: none;

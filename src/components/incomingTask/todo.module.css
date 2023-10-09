@@ -19,7 +19,7 @@
 
   @media (max-width: 415px) {
     font-size: 16px;
-    overflow: auto;
+    overflow: scroll;
     color: red;
     margin-left: 50px;
   }

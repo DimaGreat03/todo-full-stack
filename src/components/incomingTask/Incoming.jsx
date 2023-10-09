@@ -31,6 +31,7 @@ const Incoming = () => {
 
 
   useEffect(() => {
+    localStorage.setItem('currentPage', 4)
     instance
       .get(`/transactions/incoming`)
       .then((data) => setData(data.data) & setIsLoading(true) & setIsPreloader(false))
@@ -186,6 +187,7 @@ const Incoming = () => {
       
     <div className={s.h1}>Входящие задачи</div>
     
+    {/* инпут для добавления задачи во "Входящие" */}
       <input
           className={s.input}
           value={addTask}

@@ -1,10 +1,9 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import s from "./header.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 const Header = ({isAuth, setIsAuth}) => {
-
   let navigate = useNavigate()
   let removeToken = () => {
     localStorage.removeItem("token")
@@ -12,20 +11,25 @@ const Header = ({isAuth, setIsAuth}) => {
     navigate("/")
   }
 
+  const [items, setItems] = useState(["Корзина", "Разделы", "Журнал", "Календарь", "Входящие"])
+  const [adressLink, setAdressLink] = useState(["deleted", "main", "/zhurnal", "/dead-line", "incoming"])
+  const [id, setId] = useState(localStorage.getItem('currentPage'))
+
 
   return (
 
-    <div className={s.wrapperHeader}>
+    <div className={s.container}>
       {
         isAuth ? 
         <div>
-           <button className={s.button} onClick={() => removeToken() || navigate('/auth')}>выход</button>
-           <NavLink to="/deleted" className={active => active.isActive? s.currentButton : s.button}>Корзина</NavLink>
-           <NavLink to={"/main"} className={active => active.isActive? s.currentButton : s.button}>Разделы</NavLink>
-           <NavLink to="/zhurnal" className={active => active.isActive? s.currentButton : s.button}>Журнал</NavLink>
-           <NavLink to="/dead-line" className={active => active.isActive? s.currentButton : s.button}>Календарь</NavLink>
-           <NavLink to="/incoming" className={active => active.isActive? s.currentButton : s.button}>Входящие</NavLink>
-           <NavLink to="/today" className={active => active.isActive? s.currentButton : s.button}>Сегодня</NavLink>
+           {items.map((e, index) => {
+            return <span className={id == index ? s.currentButton : s.button } onClick={() => {
+              setId(index)
+              navigate(adressLink[index])
+              localStorage.setItem("currentPage", index)
+            }}>{e}</span>
+           })
+          }
         </div>
         : 
         <NavLink to="/auth"> <button className={s.button}> авторизация</button></NavLink>

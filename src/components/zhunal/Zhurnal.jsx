@@ -22,6 +22,7 @@ const Zhurnal = () => {
   const [play] = useSound(sound);
 
   useEffect(() => {
+    localStorage.setItem('currentPage', 2)
     instance
       .get(`/transactions/options?status=false&done=true`)
       .then((data) => setData(data.data) & console.log(data.data));

@@ -138,6 +138,7 @@ const Popup = ({setWatcher, watcher}) => {
                     <img className={s.iconEdit} src={iconEdit} width="25px" onClick={() => setEdit(true) & setPopId(e.id) & setTitle(e.title)} />
                      </li>
                      </ul>
+                     
               }
               {
                 deepPopup? 

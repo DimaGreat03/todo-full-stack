@@ -12,6 +12,7 @@
   @media (max-width: 415px) {
     margin-left: -20px;
     width: 360px;
+    font-size: 16px;
   }
 
 }

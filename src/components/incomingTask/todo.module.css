@@ -22,7 +22,6 @@
   border-radius: 5px;
   list-style-type: none;  
   @media (max-width: 415px) {
-    font-size: 16px;
     overflow: hidden;
     line-height: 40px;
   }
@@ -43,7 +42,6 @@
   white-space: nowrap;
 
   @media (max-width: 415px) {
-    font-size: 16px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis
@@ -57,7 +55,7 @@
 .title {
   margin-left: 10px;
   @media (max-width: 415px) {
-  font-size: 16px;
+  font-size: 18px;
   margin-left: 10px;
   text-indent: 30px;
   }

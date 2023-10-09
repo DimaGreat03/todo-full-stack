@@ -146,9 +146,10 @@ const Incoming = () => {
         : <>
           <span className={s.untill}> {untill !== null
           ? year !== dateFormat(untill, "yyyy")
-          ? <><img width="25px" src={flag} />  {dateFormat(untill, "yyyy")} </>  
-          : <> <img width="25px" src={flag}/> {dateFormat(untill, "mmmm d")} </> 
+          ? <>{dateFormat(untill, "yyyy")} </>  
+          : <> {dateFormat(untill, "mm.dd")} </> 
           : null  }  </span>
+          {/* <img width="25px" src={flag}/> */}
         </>
     )
   }
@@ -230,7 +231,6 @@ const Incoming = () => {
 
                 {/* начало отрисовывания Li-шки */}                
                 <li className={li ? (popId == e.id ? s.li : s.li2) : s.li2}>
-
                   {/* checkbox задачи */}
                   <img className={iconId !== e.id ? s.iconDone : s.iconDone2} 
                        src={done} width="25px"
@@ -260,6 +260,7 @@ const Incoming = () => {
                     }}
                   >
                     {e.title}
+                    
                   </span>
   
                   {/* кнопка удаления задачи из туду листа */}
@@ -302,7 +303,7 @@ const Incoming = () => {
                         </div>
                       ) : null
                     ) : null)}
-                </li>
+                 </li>
               </div>
             );
           })}

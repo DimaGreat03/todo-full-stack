@@ -44,7 +44,7 @@
   @media (max-width: 415px) {
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
   }
 }
 .li2:hover {
@@ -177,6 +177,12 @@
   float: right;
   color: rgb(168, 168, 168);
   margin-right: 10px;
+
+  @media (max-width: 415px) {
+     float: none;
+     font-size: 15px;
+  }
+
 }
 
 .calendar {

@@ -1,9 +1,7 @@
-
-
-
-
 .skeleton {
+  @media (max-width: 415px) {
     margin-top: -40px;
     width: 1100px;
     margin-bottom: -80px;
+  }
 }

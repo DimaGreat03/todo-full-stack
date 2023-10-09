@@ -146,7 +146,7 @@ const Popup = ({setWatcher, watcher}) => {
                     : undefined ) 
                     : undefined
                 }
-              
+               <hr className={s.hr}/>
             </div>
           );
         })

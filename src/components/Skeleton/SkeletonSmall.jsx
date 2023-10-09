@@ -4,6 +4,7 @@ import s from "./skeleton.module.css"
 
 const SmallSkeleton = (props) => (
   <ContentLoader
+    className={s.skeleton}
     speed={1}
     width={2000}
     height={200}

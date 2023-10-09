@@ -8,11 +8,18 @@
   font-size: 20px;
   color: rgb(254, 254, 254);
 
+
+  @media (max-width: 415px) {
+    margin-left: -20px;
+    width: 360px;
+  }
+
 }
 .li:hover {
   background-color: rgb(52, 60, 80);
   border-radius: 10px;
   margin-right: 40px;
+
 }
 
 .ul {

@@ -58,7 +58,6 @@
   background-color: #262d3b;
   outline: none;
   color: white;
-
   @media (max-width: 415px) {
     width: 150px;
     margin: 20px 10px 0px 25px;
@@ -137,7 +136,7 @@
   font-size: 35px;
 
   @media (max-width: 415px) {
-    margin-top: 270px;
+    margin-top: 200px;
     display: flex;
     text-align: center;
     font-size: 16px;

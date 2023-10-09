@@ -19,7 +19,7 @@ const Header = ({isAuth, setIsAuth}) => {
       {
         isAuth ? 
         <div>
-           <button className={s.buttonDel}>выход</button>
+           <NavLink to="/space" className={active => active.isActive? s.button : s.button}>space</NavLink>
            <NavLink to="/deleted" className={active => active.isActive? s.button : s.button}>Корзина</NavLink>
            <NavLink to={"/main"} className={active => active.isActive? s.button : s.button}>Разделы</NavLink>
            <NavLink to="/zhurnal" className={active => active.isActive? s.button : s.button}>Журнал</NavLink>

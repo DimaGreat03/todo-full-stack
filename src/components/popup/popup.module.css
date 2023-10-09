@@ -78,6 +78,8 @@
     font-size: 14px;
     overflow: auto;
     width: 250px;
+    margin-top: 30px;
+    margin-bottom: 10px
   }
 }
 

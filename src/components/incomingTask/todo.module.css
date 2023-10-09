@@ -11,7 +11,6 @@
   @media (max-width: 415px) {
     margin-left: 25px;
     width: 350px;
-
   }
 }
 
@@ -22,11 +21,11 @@
   background-color: #252931;
   border-radius: 5px;
   list-style-type: none;  
-
   @media (max-width: 415px) {
     font-size: 16px;
     overflow: hidden;
     color: red;
+    line-height: 40px;
   }
 }
 
@@ -41,10 +40,12 @@
   list-style-type: none;
   margin-bottom: 10px;
   margin-top: 5px;
+  overflow: hidden;
+  white-space: nowrap;
 
   @media (max-width: 415px) {
     font-size: 16px;
-    overflow: auto;
+    overflow: hidden;
     white-space: nowrap;
   }
 }
@@ -57,6 +58,8 @@
   margin-left: 10px;
   @media (max-width: 415px) {
   font-size: 16px;
+  margin-left: 10px;
+  text-indent: 30px;
   }
 }
 

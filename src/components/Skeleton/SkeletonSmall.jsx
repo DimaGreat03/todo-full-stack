@@ -1,5 +1,6 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
+import s from "./skeleton.module.css"
 
 const SmallSkeleton = (props) => (
   <ContentLoader

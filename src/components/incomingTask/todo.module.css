@@ -20,7 +20,8 @@
   @media (max-width: 415px) {
     font-size: 16px;
     overflow: auto;
-    white-space: nowrap;
+    color: red;
+    margin-left: 50px;
   }
 }
 
@@ -50,7 +51,7 @@
 .title {
   margin-left: 10px;
   @media (max-width: 415px) {
-    font-size: 16px;
+  font-size: 16px;
   }
 }
 

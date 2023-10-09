@@ -18,13 +18,14 @@
   border-width: 0.5px;
   text-decoration: none;
 
-  @media (max-width: 415px) {
+  @media (max-width: 414px) {
     text-align: center;
     display: flex;
     flex-direction: column;
     float: none;
-    margin: 10px 10px 0px 10px;
+    margin: 10px 80px 0px 10px;
     font-size: 14px;
+    min-width: 150px;
   }
 }
 
@@ -43,13 +44,14 @@
   padding: 10px;
   text-decoration: none;
   
-
   @media (max-width: 415px) {
     text-align: center;
     display: flex;
     flex-direction: column;
     float: none;
-    margin: 10px 10px 0px 10px;
+    margin: 10px 80px 0px 10px;
     font-size: 14px;
+    min-width: 150px;
+
   }
 }

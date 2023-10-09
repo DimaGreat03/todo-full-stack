@@ -60,7 +60,7 @@
   color: white;
 
   @media (max-width: 415px) {
-    width: 250px;
+    width: 150px;
     margin: 20px 10px 0px 25px;
     font-size: 14px;
   }

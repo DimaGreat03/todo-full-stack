@@ -136,7 +136,7 @@
   font-size: 35px;
 
   @media (max-width: 415px) {
-    margin-top: 200px;
+    margin-top: 160px;
     display: flex;
     text-align: center;
     font-size: 16px;

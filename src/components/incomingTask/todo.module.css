@@ -7,6 +7,12 @@
   font-family: Georgia, 'Times New Roman', Times, serif;
   line-height: 55px;
   margin-bottom: 50px;  
+
+  @media (max-width: 415px) {
+    margin-left: 25px;
+    width: 350px;
+
+  }
 }
 
 .li {
@@ -21,7 +27,6 @@
     font-size: 16px;
     overflow: hidden;
     color: red;
-    margin-left: 50px;
   }
 }
 

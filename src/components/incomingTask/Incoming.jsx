@@ -158,7 +158,7 @@ const Incoming = () => {
     return (
         Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1) <= 0
         ? null 
-        : dateFormat(untill, " dddd, mmmm d")
+        : <span className={s.untillDate}>{dateFormat(untill, " dddd, mmmm d")}</span>
     )
   }
 

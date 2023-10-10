@@ -45,6 +45,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    line-height: 40px;
   }
 }
 .li2:hover {
@@ -257,3 +258,8 @@
   vertical-align: middle; 
 }
 
+.untillDate {
+  @media (max-width: 415px) {
+    font-size: 16px;
+ }
+}

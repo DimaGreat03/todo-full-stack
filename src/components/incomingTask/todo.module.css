@@ -54,7 +54,7 @@
 
 .li2:active {
   @media (max-width: 415px) {
-    background-color: #ccc;
+    background-color: #a6a5a5;
   }
 }
 
@@ -256,3 +256,4 @@
   margin: 0px 5px 0px 5px;
   vertical-align: middle; 
 }
+

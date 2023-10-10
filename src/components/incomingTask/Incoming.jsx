@@ -260,7 +260,6 @@ const Incoming = () => {
                     }}
                   >
                     {e.title}
-                    
                   </span>
   
                   {/* кнопка удаления задачи из туду листа */}
@@ -278,7 +277,7 @@ const Incoming = () => {
                   {isPopupOpen &&
                     (isPopupOpen ? (
                       e.id == popId ? (
-                        <div>
+                        <div className={s.popup}>
 
                 {/* добавлении switch логики при которой будет 
                      отображатьс календарь или Попап */}
@@ -301,6 +300,7 @@ const Incoming = () => {
                               {setDateForHowManyDaysLeft(e.untill)}
                            </div>
                         </div>
+                        
                       ) : null
                     ) : null)}
                  </li>

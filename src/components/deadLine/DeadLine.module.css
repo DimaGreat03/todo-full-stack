@@ -7,6 +7,12 @@
     line-height: 55px;
     margin-bottom: 50px;  
     line-height: 45px;
+
+    @media (max-width: 415px) {
+      margin-left: 10px;
+      width: 400px;
+      font-size: 16px;
+    }
   }
   
   .li {
@@ -16,11 +22,19 @@
     background-color: #252931;
     border-radius: 5px;
     list-style-type: none;
+
   }
   
   .li2{
     cursor: pointer;
     list-style-type: none;
+
+    @media (max-width: 415px) {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      line-height: 10px;
+    }
   }
   .li2:hover {
     border-radius: 8px;

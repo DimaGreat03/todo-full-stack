@@ -33,7 +33,7 @@
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      line-height: 10px;
+
     }
   }
   .li2:hover {
@@ -120,7 +120,7 @@
     margin-bottom: 10px;
 
     @media (max-width: 415px) {
-      margin-top: 5px;
+      display: none;
     }
   }
   

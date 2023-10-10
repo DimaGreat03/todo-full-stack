@@ -125,6 +125,10 @@
   .untillDay {
     font-size: 17px;
     color: #7e7e7e;
+
+    @media (max-width: 415px) {
+      font-size: 16px;
+    }
   }
 
  

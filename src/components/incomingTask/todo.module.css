@@ -52,12 +52,17 @@
   background-color: rgb(52, 60, 80);
 }
 
+.li2:active {
+  @media (max-width: 415px) {
+    background-color: #ccc;
+  }
+}
+
+
 .title {
   margin-left: 10px;
   @media (max-width: 415px) {
   font-size: 18px;
-  margin-left: 10px;
-  text-indent: 30px;
   }
 }
 

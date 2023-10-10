@@ -279,14 +279,14 @@ const Incoming = () => {
                       e.id == popId ? (
                         <div className={s.popup}>
 
-                {/* добавлении switch логики при которой будет 
+                    {/* добавлении switch логики при которой будет 
                      отображатьс календарь или Попап */}
                           {switcH
                             ?  <Calendary id={e.id} data={e.untill} watcher={watcher} setWatcher={setWatcher}/>  
                             :  <Popup setWatcher={setWatcher} watcher={watcher}/>
                           } 
 
-                    {/* картинка календаря при раскрытии попапа */}
+                        {/* картинка календаря при раскрытии попапа */}
                          <img className={s.calendar} onClick={() =>setSwitch(!switcH) } width="35px" src={calendar}/> 
                       
                            {/* отображение даты при раскрытии попапа если есть дедлайн */}

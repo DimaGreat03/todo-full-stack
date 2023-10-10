@@ -26,6 +26,7 @@
 
   @media (max-width: 415px) {
     margin-top: 20px;
+    color: red;
   }
 }
 
@@ -38,7 +39,6 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-top: 20px;
-
   }
 }
 .li2:hover {
@@ -173,5 +173,9 @@
     color: #626262;
     display: contents;
   }
+}
+
+.popup {
+  margin-bottom: 30px;
 }
 

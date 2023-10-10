@@ -121,7 +121,7 @@ const Zhurnal = () => {
                 >
                   {e.title} 
                   <div className={s.category}>{e.category? e.category.title : "incoming"} <span className={s.data2Format}> - {dateFormat(e.createdAt, "mm.dd")}</span>
-</div>
+              </div>
                 </span>
 
                 {/* Кнопка времени */}
@@ -130,12 +130,13 @@ const Zhurnal = () => {
                   onClick={() => setSwitch(!switcH)}
                 >
                  <span className={s.dataFormat}> {dateFormat(e.createdAt, "mm.dd")}</span>
+                 "1"
                 </span>
                 {/* выдвижная навигация для Popup и сложный css для выделения фона при нажатии */}
                 {isPopupOpen &&
                   (isPopupOpen ? (
                     e.id == popId ? (
-                      <div>
+                      <div className={s.popup}>
                         <Popup setWatcher={setWatcher} watcher={watcher}/>
                       </div>
                     ) : null

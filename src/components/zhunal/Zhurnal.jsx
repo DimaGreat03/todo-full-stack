@@ -120,7 +120,8 @@ const Zhurnal = () => {
                   }}
                 >
                   {e.title} 
-                  <div className={s.category}>{e.category? e.category.title : "incoming"}</div>
+                  <div className={s.category}>{e.category? e.category.title : "incoming"} <span className={s.data2Format}> - {dateFormat(e.createdAt, "mm.dd")}</span>
+</div>
                 </span>
 
                 {/* Кнопка времени */}
@@ -128,7 +129,7 @@ const Zhurnal = () => {
                   className={s.time}
                   onClick={() => setSwitch(!switcH)}
                 >
-                  {dateFormat(e.createdAt, "mmmm d")}
+                 <span className={s.dataFormat}> {dateFormat(e.createdAt, "mm.dd")}</span>
                 </span>
                 {/* выдвижная навигация для Popup и сложный css для выделения фона при нажатии */}
                 {isPopupOpen &&

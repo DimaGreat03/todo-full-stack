@@ -7,6 +7,12 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 55px;
   margin-bottom: 50px;  
+
+  @media (max-width: 415px) {
+    margin-left: 10px;
+    width: 400px;
+    font-size: 16px;
+  }
 }
 
 .li {
@@ -21,6 +27,13 @@
 .li2{
   cursor: pointer;
   list-style-type: none;
+
+  @media (max-width: 415px) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+  }
 }
 .li2:hover {
   border-radius: 8px;
@@ -130,5 +143,27 @@
 
 .buttonDeleteForeverStart:hover {
   background-color: #414761;
+}
+
+.dataFormat {
+
+  @media (max-width: 415px) {
+    font-size: 14px;
+    color: #7b7b7b;
+    margin-top: -25px;
+    display: none;
+  }
+
+}
+
+.data2Format {
+   display: none;
+  @media (max-width: 415px) {
+    font-size: 14px;
+    color: #626262;
+    display: contents;
+
+  }
+
 }
 

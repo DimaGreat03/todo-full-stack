@@ -57,6 +57,14 @@
   outline: none;
   margin-bottom: -10px;
   margin-left: 40px;
+
+  @media (max-width: 415px) {
+    font-size: 14px;
+    overflow: auto;
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: -10px
+  }
 }
 
 .buttonDone {

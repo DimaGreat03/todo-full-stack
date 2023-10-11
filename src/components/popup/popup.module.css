@@ -21,6 +21,15 @@
   border-radius: 10px;
   margin-right: 40px;
 
+  @media (max-width: 415px) {
+    background-color: #252931;
+  }
+}
+
+.li:active {
+  @media (max-width: 415px) {
+    background-color: #a6a5a5;
+  }
 }
 
 .ul {
@@ -144,7 +153,12 @@
 
 .hr {
   border-color: #3c3c3c;
-  margin: 0px
+  margin: 0px;
+
+  @media (max-width: 415px) {
+    margin-top: 5px;
+    margin-bottom: 22px;
+  }
 }
 
 

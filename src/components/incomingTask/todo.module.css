@@ -10,6 +10,7 @@
 
   @media (max-width: 415px) {
     margin-left: 5px;
+    overscroll-behavior: none;
     width: 100%;
   }
 }

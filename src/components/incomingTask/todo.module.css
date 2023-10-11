@@ -45,7 +45,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    line-height: 0px;
+    margin-top: 15px
   }
 }
 .li2:hover {

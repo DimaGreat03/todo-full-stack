@@ -45,9 +45,11 @@
   border-width: 0.5px;
   border-color: rgb(255, 255, 255);
 
-  .placaholder {
-    color: red;
+  @media (max-width: 415px) {
+    width: 250px;
+    margin: 0px;
   }
+
 }
 
 .button {
@@ -96,13 +98,20 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
-  margin-bottom: 40px
+  margin-bottom: 40px;
+
+
+  @media (max-width: 415px) {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 160px;
+  }
 }
 
 .h1 {
   color: white;
   margin-left: 150px;
-  font-size: 40px
+  font-size: 40px; 
 }
 
 .category {

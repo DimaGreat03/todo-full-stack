@@ -7,7 +7,15 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 55px;
   margin-bottom: 50px;  
+
+  @media (max-width: 415px) {
+    margin-left: 10px;
+    width: 400px;
+    font-size: 18px;
+    line-height: 30px;
+  }
 }
+
 
 .li {
   cursor: pointer;
@@ -16,11 +24,22 @@
   background-color: #252931;
   border-radius: 5px;
   list-style-type: none;  
+
+  @media (max-width: 415px) {
+    margin-top: 20px;
+  }
 }
 
 .li2{
   cursor: pointer;
   list-style-type: none;
+
+  @media (max-width: 415px) {
+    margin-top: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }
 .li2:hover {
   border-radius: 8px;
@@ -29,6 +48,7 @@
 
 .title {
   margin-left: 10px;
+  line-height: -10px;
 }
 
 .checkbox {

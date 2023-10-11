@@ -11,10 +11,7 @@
   @media (max-width: 415px) {
     margin-left: 5px;
     overscroll-behavior: none;
-    width: 100%;
-    
-    overscroll-behavior: none; /* Для современных браузеров */
-    -webkit-overflow-scrolling: touch; /* Для Safari на iOS */
+    width: 400px;
   }
 }
 

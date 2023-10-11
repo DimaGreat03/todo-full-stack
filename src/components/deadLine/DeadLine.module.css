@@ -12,6 +12,7 @@
       margin-left: 10px;
       width: 400px;
       font-size: 16px;
+    
     }
   }
   
@@ -23,6 +24,10 @@
     border-radius: 5px;
     list-style-type: none;
 
+    @media (max-width: 415px) {
+      line-height: 25px;
+    }
+
   }
   
   .li2{
@@ -33,12 +38,22 @@
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-
+      line-height: 25px;
     }
   }
   .li2:hover {
     border-radius: 8px;
     background-color: rgb(52, 60, 80);
+
+    @media (max-width: 415px) {
+      background-color: #1c212b
+    }
+  }
+
+  .li2:active {
+    @media (max-width: 415px) {
+      background-color: #a6a5a5;
+    }
   }
   
   .title {
@@ -74,6 +89,10 @@
     margin-bottom: 5px;
     padding: 5px 10px 5px 10px;
     margin-left: 5px;
+
+    @media (max-width: 415px) {
+      font-size: 15px;
+    }
   }
   .removeButton:hover {
     color: rgb(190, 0, 0);
@@ -120,7 +139,11 @@
     margin-bottom: 10px;
 
     @media (max-width: 415px) {
-      display: none;
+      font-size: 15px;
+      font-family: 'Times New Roman', Times, serif;
+      margin-left: 20px;
+      margin-top: -10px;
+
     }
   }
   

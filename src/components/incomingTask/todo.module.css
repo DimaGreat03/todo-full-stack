@@ -26,13 +26,17 @@
   @media (max-width: 415px) {
     overflow: hidden;
     line-height: 30px;
-    margin-top: 25px;
+    margin-top: 30px;
 
   }
 }
 
 .ul {
   margin-top: -10px;
+
+  @media (max-width: 415px) {
+    margin-top: -30px;
+  }
 }
 
 .li2 {
@@ -47,17 +51,17 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin-top: 25px;
+    margin-top: 30px;
     line-height: 30px;
-
   }
 }
+
 .li2:hover {
   border-radius: 8px;
   background-color: rgb(52, 60, 80);
 
   @media (max-width: 415px) {
-    background-color: #1c212b
+    background-color: #1c212b;
   }
 }
 
@@ -277,4 +281,11 @@
   @media (max-width: 415px) {
     font-size: 16px;
   }
+}
+
+.fromDate{
+  color: #7b7a7a;
+  font-size: 16px;
+  margin-left: 65px;
+  margin-top: -10px
 }

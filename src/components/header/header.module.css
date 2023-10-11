@@ -21,7 +21,7 @@
     flex-direction: column;
     float: none;
     margin: 10px 10px 0px 15px;
-    font-size: 14px;
+    font-size: 18px;
     min-width: 100px;
   }
 }
@@ -45,7 +45,7 @@
     flex-direction: column;
     float: none;
     margin: 10px 10px 0px 15px;
-    font-size: 14px;
+    font-size: 18px;
     min-width: 100px;
     border-color: rgb(60, 57, 149);
   }

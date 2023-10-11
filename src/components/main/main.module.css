@@ -67,7 +67,7 @@
   border-radius: 5px;
 
   @media (max-width: 415px) {
-    width: 200px;
+    width: 280px;
     margin-left: -80px;
     font-family: 'Times New Roman', Times, serif;
   }

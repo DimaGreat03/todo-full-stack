@@ -147,7 +147,7 @@ const Incoming = () => {
           <span className={s.untill}> {untill !== null
           ? year !== dateFormat(untill, "yyyy")
           ? <>{dateFormat(untill, "yyyy")} </>  
-          : <> {dateFormat(untill, "mm.dd")} </> 
+          : <> {dateFormat(untill, "dd.mm")} </> 
           : null  }  </span>
           {/* <img width="25px" src={flag}/> */}
         </>
@@ -180,11 +180,6 @@ const Incoming = () => {
     }
     setWatcher(!watcher)
   }
-
-   {document.addEventListener('touchmove', function(event) {
-  event.preventDefault();
-}, { passive: true })} 
-
 
   return (
     <div>

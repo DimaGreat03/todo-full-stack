@@ -265,12 +265,12 @@ const Incoming = () => {
                   </span>
   
                   {/* кнопка удаления задачи из туду листа */}
-                  <button
+                  {/* <button
                     className={e.id !== button_id ? s.removeButton : s.removeButtonProcess}
                     onClick={() =>removeTask(e.id, e.title, e.createdAd, e.createdAdTime) & setButton_id(e.id)}
                   >
                     x
-                  </button>
+                  </button> */}
                   <div className={s.fromDate}>from: {dateFormat(new Date(), "dd.mm")}</div>
   
                   {/* отображение года и даты в правом углу колонки в зависимости от текущей даты, сложная логика */}

@@ -129,9 +129,9 @@ const DeadLine = () => {
                 </span>
 
                 {/* кнопка удаления задачи из туду листа */}
-                <button className={s.removeButton} onClick={() =>removeTask(e.id, e.title, e.createdAd, e.createdAdTime)}>
+                {/* <button className={s.removeButton} onClick={() =>removeTask(e.id, e.title, e.createdAd, e.createdAdTime)}>
                   x
-                </button>
+                </button> */}
 
                 {/* отображение категории к которой принадлежит задача */}
                 <div className={s.category}> {e.category? e.category.title : "incoming"}</div>

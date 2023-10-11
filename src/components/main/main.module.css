@@ -41,6 +41,12 @@
 .h1 {
   color: white;
   text-align: center;
+
+  @media (max-width: 415px) {
+    font-size: 17px;
+    margin-top: 160px;
+    font-family: 'Times New Roman', Times, serif;
+  }
 }
 
 .input {
@@ -86,7 +92,6 @@
   @media (max-width: 415px) {
     font-size: 14px;
     font-family: 'Times New Roman', Times, serif;
-
   }
 }
 

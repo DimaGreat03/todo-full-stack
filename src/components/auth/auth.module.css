@@ -12,17 +12,35 @@
   color: white;
   font-size: 25px;
   text-align: center;
-  font-family: 'roboto';
+  font-family: "roboto";
+
+  @media (max-width: 414px) {
+    width: 350px;
+    height: 400px;
+    font-size: 18px;
+  }
 }
 
 .input1 {
   margin-top: 30px;
   font-size: 25px;
   margin-bottom: 15px;
+
+  @media (max-width: 414px) {
+    width: 250px;
+    height: 25px;
+    font-size: 18px;
+  }
 }
 
 .input {
   font-size: 25px;
+
+  @media (max-width: 414px) {
+    width: 250px;
+    height: 25px;
+    font-size: 18px;
+  }
 }
 
 .span {
@@ -33,6 +51,9 @@
 .zdes {
   color: red;
   cursor: pointer;
+  @media (max-width: 414px) {
+    font-size: 20px;
+  }
 }
 
 .button {
@@ -42,6 +63,12 @@
   border-radius: 7px;
   background-color: #313a4c;
   color: white;
+
+  @media (max-width: 414px) {
+    width: 125px;
+    height: 50px;
+    font-size: 18px;
+  }
 }
 
 .button:hover {

@@ -120,7 +120,7 @@ const Zhurnal = () => {
                   }}
                 >
                   {e.title} 
-                  <div className={s.category}>{e.category? e.category.title : "incoming"} <span className={s.data2Format}> - {dateFormat(e.createdAt, "mm.dd")}</span>
+                  <div className={s.category}>{e.category? e.category.title : "incoming"} <span className={s.data2Format}> - {dateFormat(e.createdAt, "dd.mm.yy")}</span>
               </div>
                 </span>
 

@@ -259,6 +259,8 @@ const Incoming = () => {
                       localStorage.setItem("text", e.notes)
                     }}
                   >
+                    {/* отображение на какой день назначен дедлайн */}
+                 {setDateForMainDiv(e.untill)}
                     {e.title}
                   </span>
   
@@ -271,7 +273,7 @@ const Incoming = () => {
                   </button>
   
                   {/* отображение года и даты в правом углу колонки в зависимости от текущей даты, сложная логика */}
-                 {setDateForMainDiv(e.untill)}
+                 {/* {setDateForMainDiv(e.untill)} */}
                
                {/* описание логики при открытии Попапа */}
                   {isPopupOpen &&

@@ -125,6 +125,10 @@
   margin-bottom: 5px;
   padding: 5px 10px 5px 10px;
   margin-left: 10px;
+
+  @media (max-width: 415px) {
+    font-size: 15px;
+  }
 }
 .removeButton:hover {
   color: rgb(190, 0, 0);

@@ -178,15 +178,16 @@ const Todo = () => {
                   }}
                 >
                   {e.title}
+                  <div className={s.fromDate}>from: {dateFormat(new Date(), "dd.mm")}</div>
                 </span>
 
                 {/* кнопка удаления задачи из туду листа */}
-                <button
+                {/* <button
                   className={s.removeButton}
                   onClick={() =>removeTask(e.id, e.title, e.createdAd, e.createdAdTime)}
                 >
                   x
-                </button>
+                </button> */}
 
                 {/* отображение года и даты в зависимости от текущей даты, сложная логика */}
                 <span className={s.untill}> {e.untill !== null? year !== dateFormat(e.untill, "yyyy")? <><img width="25px" src={flag} />  {dateFormat(e.untill, "yyyy")} </>  : <> <img width="25px" src={flag}/> {dateFormat(e.untill, "mmmm d")} </> : null  }  </span>

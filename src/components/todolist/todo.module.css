@@ -44,6 +44,16 @@
 .li2:hover {
   border-radius: 8px;
   background-color: rgb(52, 60, 80);
+
+  @media (max-width: 415px) {
+    background-color: #1c212b;
+  }
+}
+
+.li2:active {
+  @media (max-width: 415px) {
+    background-color: #646464;
+  }
 }
 
 .title {
@@ -170,4 +180,11 @@
   color: rgb(139, 139, 139);
   padding: 6px;
   margin-left: 15px;
+}
+
+.fromDate {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 15px;
+  color: rgb(148, 148, 148);
+  margin-left: 30px;
 }

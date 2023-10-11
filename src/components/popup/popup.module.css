@@ -92,7 +92,7 @@
   margin-left: 20px;
 
   @media (max-width: 415px) {
-    font-size: 14px;
+    font-size: 17px;
     overflow: auto;
     width: 250px;
     margin-top: 20px;

@@ -24,6 +24,17 @@
   background-color: #2d3545;
   padding: 10px;
   border-radius: 10px;
+
+  @media (max-width: 415px) {
+    background-color: #1c212b
+  }
+}
+
+.li:active {
+  @media (max-width: 415px) {
+    background-color: #a6a5a5;
+  }
+  
 }
 
 .link {

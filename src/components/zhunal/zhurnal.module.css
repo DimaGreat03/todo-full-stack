@@ -43,7 +43,19 @@
 .li2:hover {
   border-radius: 8px;
   background-color: rgb(52, 60, 80);
+
+  @media (max-width: 415px) {
+    background-color: #1c212b
+  }
 }
+
+.li2:active {
+  @media (max-width: 415px) {
+    background-color: #a6a5a5;
+  }
+}
+
+
 
 .title {
   margin-left: 10px;

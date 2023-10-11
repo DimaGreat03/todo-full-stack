@@ -10,7 +10,7 @@
 
   @media (max-width: 415px) {
     margin-left: 5px;
-    width: 400px;
+    width: 100%;
   }
 }
 
@@ -181,7 +181,7 @@
   font-size: 35px;
 
   @media (max-width: 415px) {
-    margin-top: 160px;
+    margin-top: 120px;
     display: flex;
     text-align: center;
     font-size: 16px;

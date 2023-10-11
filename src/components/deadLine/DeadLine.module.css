@@ -137,13 +137,13 @@
     margin-top: -15px;
     margin-left: 30px;
     margin-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
 
     @media (max-width: 415px) {
       font-size: 15px;
       font-family: 'Times New Roman', Times, serif;
       margin-left: 20px;
-      margin-top: 0px;
-
+      margin-top: -10px;
     }
   }
   

@@ -4,14 +4,13 @@
   margin-right: 80px;
   margin-top: 20px;
   font-size: 23px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   line-height: 55px;
-  margin-bottom: 50px;  
+  margin-bottom: 50px;
 
   @media (max-width: 415px) {
     margin-left: 5px;
     width: 400px;
-
   }
 }
 
@@ -22,7 +21,7 @@
   border-color: #676767;
   background-color: #252931;
   border-radius: 5px;
-  list-style-type: none;  
+  list-style-type: none;
   /* display: none; */
   @media (max-width: 415px) {
     overflow: hidden;
@@ -32,11 +31,9 @@
 
 .ul {
   margin-top: -10px;
-
-  
 }
 
-.li2{
+.li2 {
   cursor: pointer;
   list-style-type: none;
   margin-bottom: 10px;
@@ -54,6 +51,10 @@
 .li2:hover {
   border-radius: 8px;
   background-color: rgb(52, 60, 80);
+
+  @media (max-width: 415px) {
+    background-color: #1c212b
+  }
 }
 
 .li2:active {
@@ -62,11 +63,10 @@
   }
 }
 
-
 .title {
   margin-left: 10px;
   @media (max-width: 415px) {
-  font-size: 18px;
+    font-size: 18px;
   }
 }
 
@@ -188,19 +188,16 @@
   margin-right: 10px;
 
   @media (max-width: 415px) {
-     float: none;
-     font-size: 15px;
+    float: none;
+    font-size: 15px;
   }
-
 }
 
 .calendar {
   margin-left: 50px;
   margin-top: 40px;
   margin-right: 10px;
-
 }
-
 
 .clear2 {
   border-style: solid;
@@ -209,7 +206,7 @@
   border-radius: 5px;
   color: rgb(139, 139, 139);
   padding: 6px;
-  margin-left: 15px;  
+  margin-left: 15px;
 }
 
 .all {
@@ -231,7 +228,7 @@
     margin-top: 5px;
     margin-bottom: 5px;
     font-size: 16px;
- }
+  }
 }
 
 .buttonDeleteForever {
@@ -240,7 +237,7 @@
   padding: 5px;
   border-radius: 5px;
   color: rgb(109, 109, 109);
-  cursor:  default;
+  cursor: default;
 }
 
 .buttonDeleteForeverStart {
@@ -257,19 +254,19 @@
   background-color: #414761;
 }
 
-.iconDone{
+.iconDone {
   opacity: 0.1;
   margin: 0px 5px 0px 5px;
   vertical-align: middle;
 }
 
-.iconDone2{
+.iconDone2 {
   margin: 0px 5px 0px 5px;
-  vertical-align: middle; 
+  vertical-align: middle;
 }
 
 .untillDate {
   @media (max-width: 415px) {
     font-size: 16px;
- }
+  }
 }

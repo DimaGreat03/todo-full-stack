@@ -1,6 +1,5 @@
 .wrapperHeader {
   height: 100px;
-  text-align: center;
 }
 
 .button {
@@ -64,4 +63,9 @@
     font-size: 20px;
     min-width: 150px;
   }
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
 }

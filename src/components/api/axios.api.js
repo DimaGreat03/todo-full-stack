@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 export const instance = axios.create({
-  baseURL: "https://c406-2a03-d000-7106-c531-bd73-b3ba-67c8-bb58.ngrok-free.app",
+  baseURL: "https://1c71-2a03-d000-7100-cee4-ec03-d771-d43d-a973.ngrok-free.app",
   headers: {
     'Content-Type': 'application/json',
     Authorization: `Bearer ` + localStorage.getItem("token") || null,

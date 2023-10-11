@@ -67,6 +67,21 @@ const Todo = () => {
 
   const year = dateFormat(new Date(), "yyyy")
 
+  const setDateForMainDiv = (untill) => {
+    return (
+       Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1) <= 0
+        ? untill? <span className={s.untill}>сегодня</span> : null
+        : <>
+          <span className={s.untill}> {untill !== null
+          ? year !== dateFormat(untill, "yyyy")
+          ? <>{dateFormat(untill, "yyyy")} </>  
+          : <> {dateFormat(untill, "dd.mm")} </> 
+          : null  }  </span>
+          {/* <img width="25px" src={flag}/> */}
+        </>
+    )
+  }
+  
 
   useEffect(() => {
     let getUser = localStorage.getItem("user");
@@ -177,6 +192,11 @@ const Todo = () => {
                     setSwitch(false)
                   }}
                 >
+               
+               {/* установка даты дедлайна в начале титла */}
+               {setDateForMainDiv(e.untill)}
+
+               {/* отрисовка титла */}
                   {e.title}
                   <div className={s.fromDate}>from: {dateFormat(new Date(), "dd.mm")}</div>
                 </span>
@@ -188,9 +208,6 @@ const Todo = () => {
                 >
                   x
                 </button> */}
-
-                {/* отображение года и даты в зависимости от текущей даты, сложная логика */}
-                <span className={s.untill}> {e.untill !== null? year !== dateFormat(e.untill, "yyyy")? <><img width="25px" src={flag} />  {dateFormat(e.untill, "yyyy")} </>  : <> <img width="25px" src={flag}/> {dateFormat(e.untill, "mmmm d")} </> : null  }  </span>
 
 
                 {/* Кнопка времени, при нажатии на которую происходит switch */}

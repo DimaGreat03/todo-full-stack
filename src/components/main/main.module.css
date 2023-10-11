@@ -18,6 +18,12 @@
   padding: 10px;
   line-height: 35px;
 
+  @media (max-width: 415px) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
 }
 
 .li:hover{
@@ -116,6 +122,25 @@
     font-size: 14px;
     font-family: 'Times New Roman', Times, serif;
   }
+}
+
+.buttonDeleteForever {
+  margin-left: 100px;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  color: rgb(109, 109, 109);
+  cursor: default;
+}
+
+.buttonDeleteForeverStart {
+  margin-left: 100px;
+  margin-top: 5px;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  color: rgb(255, 128, 0);
+  cursor: pointer;
 }
 
 

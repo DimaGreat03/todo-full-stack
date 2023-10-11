@@ -157,9 +157,8 @@
 }
 
 .untill {
-  float: right;
-  color: rgb(168, 168, 168);
-  margin-right: 10px;
+  color: rgb(251, 113, 0);
+  font-size: 15px;
 }
 
 .calendar {

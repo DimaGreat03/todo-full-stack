@@ -44,7 +44,7 @@ const Main = ({ setId }) => {
           disabled={addList == ""}
           onClick={() => addCategory()}
         >
-          Добавить плитку
+          Добавить
         </button>
       </div>
       <hr className={s.hr} />

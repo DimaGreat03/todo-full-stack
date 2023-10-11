@@ -130,8 +130,8 @@ const Zhurnal = () => {
                   onClick={() => setSwitch(!switcH)}
                 >
                  <span className={s.dataFormat}> {dateFormat(e.createdAt, "mm.dd")}</span>
-                 "1"
                 </span>
+
                 {/* выдвижная навигация для Popup и сложный css для выделения фона при нажатии */}
                 {isPopupOpen &&
                   (isPopupOpen ? (

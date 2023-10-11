@@ -26,6 +26,8 @@
   @media (max-width: 415px) {
     overflow: hidden;
     line-height: 30px;
+    margin-top: 25px;
+
   }
 }
 
@@ -45,7 +47,9 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin-top: 15px
+    margin-top: 25px;
+    line-height: 30px;
+
   }
 }
 .li2:hover {

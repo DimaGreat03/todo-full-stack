@@ -76,7 +76,7 @@
   border-color: rgb(255, 255, 255);
 
   @media (max-width: 415px) {
-    width: 280px;
+    width: 250px;
     margin: 0px;
     margin-left: 10px;
     margin-right: 10px;
@@ -140,7 +140,7 @@
   @media (max-width: 415px) {
     text-align: center;
     font-size: 18px;
-    margin-top: 160px;
+    margin-top: 140px;
   }
 }
 

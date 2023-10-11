@@ -13,6 +13,8 @@
     overscroll-behavior: none;
     width: 100%;
     
+    overscroll-behavior: none; /* Для современных браузеров */
+    -webkit-overflow-scrolling: touch; /* Для Safari на iOS */
   }
 }
 

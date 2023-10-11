@@ -183,7 +183,7 @@ const Incoming = () => {
 
    {document.addEventListener('touchmove', function(event) {
   event.preventDefault();
-}, { passive: false })} 
+}, { passive: true })} 
 
 
   return (

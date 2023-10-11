@@ -119,7 +119,12 @@
 .h1 {
   color: white;
   margin-left: 150px;
-  font-size: 40px
+  font-size: 40px;
+
+  @media (max-width: 415px) {
+    font-size: 18px;
+    margin-top: 10px;
+  }
 }
 
 .category {

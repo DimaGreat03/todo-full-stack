@@ -66,7 +66,11 @@
 }
 
 .nav {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Два столбца с равной шириной */
-  grid-gap: 10px; /* Дополнительное пространство между элементами, если нужно */
+
+
+  @media (max-width: 415px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Два столбца с равной шириной */
+    grid-gap: 0px; /* Дополнительное пространство между элементами, если нужно */
+  }
 }

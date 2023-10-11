@@ -181,6 +181,9 @@ const Incoming = () => {
     setWatcher(!watcher)
   }
 
+   {document.addEventListener('touchmove', function(event) {
+  event.preventDefault();
+}, { passive: false })} 
 
 
   return (
@@ -272,6 +275,7 @@ const Incoming = () => {
                     x
                   </button> */}
                   <div className={s.fromDate}>from: {dateFormat(new Date(), "dd.mm")}</div>
+                  
   
                   {/* отображение года и даты в правом углу колонки в зависимости от текущей даты, сложная логика */}
                  {/* {setDateForMainDiv(e.untill)} */}

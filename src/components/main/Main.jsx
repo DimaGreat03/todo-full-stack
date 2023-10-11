@@ -2,8 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import s from "./main.module.css";
 import { useEffect, useState } from "react";
 import { instance } from "../api/axios.api";
-import sound from "./sound.mp3";
-import useSound from "use-sound";
+import dateFormat from "dateformat";
 
 
 const Main = ({ setId }) => {
@@ -19,7 +18,7 @@ const Main = ({ setId }) => {
     instance
       .post("/categories", {
         title: addList,
-        isActive: true
+        isActive: true,
       })
       .then((data) => setWatcher(!watcher));
   };
@@ -40,7 +39,11 @@ const Main = ({ setId }) => {
           onChange={(e) => setAddList(e.target.value)}
           placeholder="начни новый день c плана"
         />
-        <button className={s.buttonPlitka} disabled={addList == ""} onClick={() => addCategory()}>
+        <button
+          className={s.buttonPlitka}
+          disabled={addList == ""}
+          onClick={() => addCategory()}
+        >
           Добавить плитку
         </button>
       </div>
@@ -50,21 +53,22 @@ const Main = ({ setId }) => {
           ? "No have content in Main Page"
           : list.map((e) => {
               return (
-                <span>
-                  <Link key={e.id} to={`/todo:${e.id}`}>
-                    <button
-                      className={s.button}
-                      onClick={() => {
-                        localStorage.setItem("user", e.id);
-                        localStorage.setItem("title", e.title)
-                        setId(e.id);
-                      }}
-                    >
-                      {e.title}
-                    </button>
+                
+                <li
+                  className={s.li}
+                  onClick={() => {
+                    localStorage.setItem("user", e.id);
+                    localStorage.setItem("title", e.title);
+                    setId(e.id);
+                  }}
+                >
+                   <input type="checkbox"/> 
+                  <Link className={s.link} key={e.id} to={`/todo:${e.id}`}>
+                  {e.title}
+                  <div className={s.fromData}>from: {dateFormat(new Date(), "dd.mm")}</div>
                   </Link>
-                  <span className={s.delete} onClick={() => removeCategory(e.id)}>X</span>
-                </span>
+                  {/* <span className={s.delete} onClick={() => removeCategory(e.id)}>X</span> */}
+                </li>
               );
             })}
       </div>

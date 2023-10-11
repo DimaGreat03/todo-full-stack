@@ -123,6 +123,8 @@ const Todo = () => {
 
   return (
     <div>
+            {/* подтягивание title туду листа с localStorage */}
+            <h1 className={s.mainTitle}> {localStorage.getItem("title")} </h1>
       {/* инпут для написания задачи */}
       <input
         className={s.input}
@@ -142,8 +144,7 @@ const Todo = () => {
 
       <hr />
 
-      {/* подтягивание title туду листа с localStorage */}
-      <span className={s.mainTitle}> {localStorage.getItem("title")} </span>
+
 
       <div className={s.wrapper}>
         {/* метод map, для выставления задач  */}

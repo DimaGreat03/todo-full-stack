@@ -112,15 +112,15 @@ const Main = ({ setId }) => {
                   }}
                 >
                     {/* инпут для выделения множества объектов с последующим удалением */}
-                    <input      
+                    <input     
                       value={e.id}
-                      type="radio"
+                      type="checkbox"
                       onChange={() => {}}
                       checked={selectedIds.includes(e.id)}
                       onClick={() => handleCheckboxChange(e.id)}
                      />  
                   <Link className={s.link} key={e.id} to={`/todo:${e.id}`}>
-                  {e.title}
+                 <span className={s.title}>{e.title}</span> 
                   <div className={s.fromData}>from: {dateFormat(new Date(), "dd.mm")}</div>
                   </Link>
                   {/* <span className={s.delete} onClick={() => removeCategory(e.id)}>X</span> */}

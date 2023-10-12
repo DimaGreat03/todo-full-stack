@@ -5,6 +5,9 @@ import Popup from "../popup/Popup";
 import Calendary from "../calendar/Calendar";
 import calendar from "../todolist/calendar.png"
 import dateFormat from "dateformat";
+import preloader from "./assets/preloader.gif"
+import SmallSkeleton from "../Skeleton/SkeletonSmall";
+
 
 
 const DeadLine = () => {
@@ -16,11 +19,14 @@ const DeadLine = () => {
   const [li, setLi] = useState(false);
   const [inDay, setInDay] = useState("")
   const year = dateFormat(new Date(), "yyyy")
+  const [isPreloader, setIsPreloader] = useState(false)
+  const [isSkeleton, setIsSkeleton] = useState(true)
+
 
   useEffect(() => {
     instance
       .get(`/transactions`)
-      .then((data) => setData(data.data) & console.log(data.data));
+      .then((data) => setData(data.data) & console.log(data.data) & setIsSkeleton(false));
   }, [watcher]);
 
   const checkDate = (day) => {
@@ -79,7 +85,8 @@ const DeadLine = () => {
       <hr />
 
       <div className={s.wrapper}>
-        
+      {isSkeleton && <SmallSkeleton/>}
+
         {/* метод map, для выставления задач  */}
         {data.map((e) => {
 

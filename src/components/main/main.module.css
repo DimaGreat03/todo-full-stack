@@ -12,7 +12,7 @@
 .li {
   font-size: 20px;
   cursor: pointer;
-
+  
   color: white;
   list-style-type: none;  
   text-decoration: none;
@@ -173,5 +173,7 @@
   margin-top: -20px;
 }
 
-
+.title {
+  margin: 0px 0px 0px 10px;
+}
 

@@ -5,6 +5,7 @@ import useSound from "use-sound";
 import sound from "./assets/close.mp3";
 import dateFormat from "dateformat";
 import Popup from "../popup/Popup";
+import SmallSkeleton from "../Skeleton/SkeletonSmall";
 
 
 const Zhurnal = () => {
@@ -17,6 +18,8 @@ const Zhurnal = () => {
   const [inputId, setInputId] = useState("")
   const [checkInput, setCheckInput] = useState(true)
   const [selectedIds, setSelectedIds] = useState([]);
+  const [isSkeleton, setIsSkeleton] = useState(true);
+
 
 
   const [play] = useSound(sound);
@@ -25,7 +28,7 @@ const Zhurnal = () => {
     localStorage.setItem('currentPage', 2)
     instance
       .get(`/transactions/options?status=false&done=true`)
-      .then((data) => setData(data.data) & console.log(data.data));
+      .then((data) => setData(data.data) & console.log(data.data) & setIsSkeleton(false));
   }, [watcher]);
 
   const returnTask = (id, boolean) => {
@@ -80,6 +83,7 @@ const Zhurnal = () => {
                 > 
                 Удалить навсегда 
         </span>
+        {isSkeleton && <SmallSkeleton/>}
         {/* метод map, для выставления задач  */}
         {data.map((e) => {
           return (

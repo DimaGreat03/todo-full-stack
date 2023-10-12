@@ -204,7 +204,7 @@ const Incoming = () => {
         </button>
         
         {/* отображение идущего человечка при отправки задачи */}
-        {isPreloader && <img src={preloader} width="50px"/>}
+        {isPreloader && <img src={preloader} width="45px"/>}
 
         <hr />
 

@@ -3,6 +3,9 @@ import s from "./main.module.css";
 import { useEffect, useState } from "react";
 import { instance } from "../api/axios.api";
 import dateFormat from "dateformat";
+import SmallSkeleton from "../Skeleton/SkeletonSmall";
+import noHave from "./assets/empty.png"
+import preloader from "./assets/preloader.gif"
 
 
 const Main = ({ setId }) => {
@@ -10,9 +13,13 @@ const Main = ({ setId }) => {
   const [addList, setAddList] = useState("");
   const [watcher, setWatcher] = useState(false);
   const [selectedIds, setSelectedIds] = useState([]);
+  const [isSkeleton, setIsSkeleton] = useState(true)
+  const [isPreloader, setIsPreloader] = useState(false)
+
+
 
   useEffect(() => {
-    instance.get("/categories").then((data) => setList(data.data));
+    instance.get("/categories").then((data) => setList(data.data) & setIsSkeleton(false));
   }, [watcher]);
 
   const addCategory = () => {
@@ -21,7 +28,7 @@ const Main = ({ setId }) => {
         title: addList,
         isActive: true,
       })
-      .then((data) => setWatcher(!watcher));
+      .then((data) => setWatcher(!watcher) & setIsPreloader(false));
   };
 
   const removeCategory = (id) => {
@@ -54,7 +61,7 @@ const Main = ({ setId }) => {
 
   return (
     <div>
-      <h1 className={s.h1}>Главная страница </h1>
+      <h1 className={s.h1}> Главна страница </h1>
       <div className={s.addPlitka}>
         <input
           className={s.input}
@@ -65,10 +72,13 @@ const Main = ({ setId }) => {
         <button
           className={s.buttonPlitka}
           disabled={addList == ""}
-          onClick={() => addCategory()}
+          onClick={() => addCategory() & setIsPreloader(true)}
         >
           Добавить
         </button>
+
+        {isPreloader && <img className={s.runningMan} src={preloader} width="45px"/>}
+
       </div>
       <hr className={s.hr} />
       <div className={s.wrapper}>
@@ -81,8 +91,16 @@ const Main = ({ setId }) => {
           Удалить навсегда 
       </span>
 
+      {isSkeleton &&  <SmallSkeleton/>}
+     
+
         {list.length === 0
-          ? "No have content in Main Page"
+          ? !isSkeleton 
+             && list.length === 0 
+             && <div>
+                  <img className={s.emptyIcon} src={noHave} width="300px"/>
+                  <h1 className={s.emptyDescription}>Пусто, но ты можешь добавить новый раздел</h1>
+                </div>
           : list.map((e) => {
               return (
                 <li

@@ -269,7 +269,7 @@ const Incoming = () => {
                   >
                     x
                   </button> */}
-                  <div className={s.fromDate}>from: {dateFormat(new Date(), "dd.mm")}</div>
+                  <div className={s.fromDate}>from: {dateFormat(e.createdAt, "dd.mm")}</div>
                   
   
                   {/* отображение года и даты в правом углу колонки в зависимости от текущей даты, сложная логика */}

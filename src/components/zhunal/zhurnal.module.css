@@ -172,18 +172,9 @@
   background-color: #414761;
 }
 
-.dataFormat {
-
-  @media (max-width: 415px) {
-    font-size: 14px;
-    color: #7b7b7b;
-    margin-top: -25px;
-    display: none;
-  }
-}
 
 .data2Format {
-   display: none;
+   
   @media (max-width: 415px) {
     font-size: 14px;
     color: #626262;

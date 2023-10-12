@@ -125,12 +125,12 @@ const Zhurnal = () => {
                 </span>
 
                 {/* Кнопка времени */}
-                <span
+                {/* <span
                   className={s.time}
                   onClick={() => setSwitch(!switcH)}
                 >
                  <span className={s.dataFormat}> {dateFormat(e.createdAt, "mm.dd")}</span>
-                </span>
+                </span> */}
 
                 {/* выдвижная навигация для Popup и сложный css для выделения фона при нажатии */}
                 {isPopupOpen &&

@@ -170,8 +170,8 @@
 .clearCalendar {
   margin: 0px 0px 0px 10px;
 }
-
-.clear2 {
+  
+  .clear2 {
   border-style: solid;
   border-width: 0.5px;
   border-color: #d3d3d3;
@@ -195,5 +195,26 @@
     color: rgb(148, 148, 148);
     margin-left: 30px;
     margin-top: -5px;
+  }
+}
+
+.emptyIcon {
+  margin-left: 135px;
+
+  @media (max-width: 415px) {
+    display: flex;
+    margin: auto;
+  }
+}
+
+.descriptionEmpty {
+  font-size: 25px;
+  margin: -10px 0px 0px 70px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+
+  @media (max-width: 415px) {
+    text-align: center;
+    margin: 10px 0px 0px 0px;
   }
 }

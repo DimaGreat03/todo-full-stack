@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import s from "./todo.module.css";
 import { instance } from "../api/axios.api";
-import useSound from "use-sound";
-import sound from "./close.mp3";
 import Popup from "../popup/Popup";
 import Calendary from "../calendar/Calendar";
 import calendar from "./calendar.png";
-import flag from "./flag.png"
 import dateFormat, { masks } from "dateformat";
 import { i18n } from "dateformat";
+import SmallSkeleton from "../Skeleton/SkeletonSmall";
+import noHave from "./assets/empty.png"
 
 
 const Todo = () => {
@@ -21,6 +20,7 @@ const Todo = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [id, setId] = useState("");
   const [li, setLi] = useState(false);
+  const [isSkeleton, setIsSkeleton] = useState(true);
 
   i18n.dayNames = [
     "Sun",
@@ -82,12 +82,11 @@ const Todo = () => {
     )
   }
   
-
   useEffect(() => {
     let getUser = localStorage.getItem("user");
     instance
       .get(`/transactions/${getUser}/options?&limit=30&status=true&done=false`)
-      .then((data) => setData(data.data));
+      .then((data) => setData(data.data) & setIsSkeleton(false));
       localStorage.setItem("currentPage", 2)
   }, [watcherT]);
 
@@ -163,6 +162,9 @@ const Todo = () => {
 
       <div className={s.wrapper}>
         {/* метод map, для выставления задач  */}
+
+        {isSkeleton ?  <SmallSkeleton/> : data.length === 0 && <span> <img className={s.emptyIcon} width="300px" src={noHave}/> <div className={s.descriptionEmpty}>Нет задач, но ты можешь добавить новую</div> </span>}
+
         {data.map((e) => {
           return (
             <div>

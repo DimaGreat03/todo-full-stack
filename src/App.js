@@ -56,7 +56,7 @@ function App() {
           : 
           <>
             <Route path="/initial" element={<LoadingPage />} />
-            <Route path="/auth" element={<Auth setIsAuth={setIsAuth} />} />
+            <Route path="/" element={<Auth setIsAuth={setIsAuth} />} />
           </>
         }
       </Routes>

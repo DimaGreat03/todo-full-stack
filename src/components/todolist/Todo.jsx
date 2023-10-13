@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
+import { useNavigate } from "react-router";
 import s from "./todo.module.css";
 import { instance } from "../api/axios.api";
 import Popup from "../popup/Popup";
 import Calendary from "../calendar/Calendar";
-import calendar from "./calendar.png";
+import calendar from "./assets/calendar.png";
 import dateFormat, { masks } from "dateformat";
 import { i18n } from "dateformat";
 import SmallSkeleton from "../Skeleton/SkeletonSmall";
 import noHave from "./assets/empty.png"
+import runningMan from "./assets/preloader.gif"
 
 
 const Todo = () => {
@@ -21,6 +23,10 @@ const Todo = () => {
   const [id, setId] = useState("");
   const [li, setLi] = useState(false);
   const [isSkeleton, setIsSkeleton] = useState(true);
+  const [isRunMan, setIsRunMan] = useState(false)
+  let navigate = useNavigate()
+
+  const year = dateFormat(new Date(), "yyyy")
 
   i18n.dayNames = [
     "Sun",
@@ -65,23 +71,7 @@ const Todo = () => {
     "Декабрь",
   ];
 
-  const year = dateFormat(new Date(), "yyyy")
 
-  const setDateForMainDiv = (untill) => {
-    return (
-       Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1) <= 0
-        ? untill? <span className={s.untill}>сегодня</span> : null
-        : <>
-          <span className={s.untill}> {untill !== null
-          ? year !== dateFormat(untill, "yyyy")
-          ? <>{dateFormat(untill, "yyyy")} </>  
-          : <> {dateFormat(untill, "dd.mm")} </> 
-          : null  }  </span>
-          {/* <img width="25px" src={flag}/> */}
-        </>
-    )
-  }
-  
   useEffect(() => {
     let getUser = localStorage.getItem("user");
     instance
@@ -89,6 +79,7 @@ const Todo = () => {
       .then((data) => setData(data.data) & setIsSkeleton(false));
       localStorage.setItem("currentPage", 2)
   }, [watcherT]);
+
 
   const addCategory = () => {
     instance
@@ -103,7 +94,7 @@ const Todo = () => {
         lastCheck: false,
         incomingTask: false,
       })
-      .then((data) => setWatcherT(!watcherT));
+      .then((data) => setWatcherT(!watcherT) & setIsRunMan(false));
   };
 
   const updateStatus = (id, isCheck) => {
@@ -135,10 +126,27 @@ const Todo = () => {
       .then(() => setWatcherT(!watcherT));
   }
 
+  const setDateForMainDiv = (untill) => {
+    return (
+       Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1) <= 0
+        ? untill? <span className={s.untill}>сегодня</span> : null
+        : <>
+          <span className={s.untill}> {untill !== null
+          ? year !== dateFormat(untill, "yyyy")
+          ? <>{dateFormat(untill, "yyyy")} </>  
+          : <> {dateFormat(untill, "dd.mm")} </> 
+          : null  }  </span>
+          {/* <img width="25px" src={flag}/> */}
+        </>
+    )
+  }
+
+
   return (
     <div>
             {/* подтягивание title туду листа с localStorage */}
             <h1 className={s.mainTitle}> {localStorage.getItem("title")} </h1>
+
       {/* инпут для написания задачи */}
       <input
         className={s.input}
@@ -151,19 +159,24 @@ const Todo = () => {
       <button
         className={s.button}
         disabled={addTask == ""}
-        onClick={() => addCategory()}
+        onClick={() => addCategory() & setIsRunMan(true)}
       >
-        добавить
+        +
       </button>
-
+      {isRunMan? <img src={runningMan} className={s.runMan}/> : <button className={s.button} onClick={() => navigate("/main")}>назад</button> }
       <hr />
-
-
 
       <div className={s.wrapper}>
         {/* метод map, для выставления задач  */}
 
-        {isSkeleton ?  <SmallSkeleton/> : data.length === 0 && <span> <img className={s.emptyIcon} width="300px" src={noHave}/> <div className={s.descriptionEmpty}>Нет задач, но ты можешь добавить новую</div> </span>}
+        {isSkeleton 
+          ?  <SmallSkeleton/> 
+          : data.length === 0 
+            && <span> 
+                 <img className={s.emptyIcon} width="300px" src={noHave}/> 
+                 <div className={s.descriptionEmpty}>Нет задач, но ты можешь добавить новую</div> 
+               </span>
+        }
 
         {data.map((e) => {
           return (

@@ -108,7 +108,7 @@ const Popup = ({setWatcher, watcher}) => {
       <button className={s.addPopup} onClick={() => addPopup() & setPreloader(false) & setAppPopupTask("")} disabled={addPopupTask == ""}>Let's go</button>
 
     {
-     preloader? null : <span className={s.loadingPopup}> <img src={loadingPopup} width="35px"/> </span>
+     preloader? null : <span className={s.loadingPopup}> <img src={loadingPopup} width="25px"/> </span>
     } 
 
     {

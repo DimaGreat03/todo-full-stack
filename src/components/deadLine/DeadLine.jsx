@@ -3,7 +3,7 @@ import s from "./DeadLine.module.css";
 import { instance } from "../api/axios.api";
 import Popup from "../popup/Popup";
 import Calendary from "../calendar/Calendar";
-import calendar from "../todolist/calendar.png"
+import calendar from "./assets/calendar.png"
 import dateFormat from "dateformat";
 import preloader from "./assets/preloader.gif"
 import SmallSkeleton from "../Skeleton/SkeletonSmall";

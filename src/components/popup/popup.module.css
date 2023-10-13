@@ -5,17 +5,19 @@
 }
 
 .li {
-  font-size: 20px;
+  font-size: 18.5px;
   margin-top: 5px;
   margin-bottom: 5px;
+  margin-right: 40px;
   color: rgb(254, 254, 254);
-
+  line-height: 45px;
 
   @media (max-width: 415px) {
-    margin-left: -20px;
+    margin-left: -25px;
     margin-top: 10px;
     width: 360px;
     font-size: 17px;
+    line-height: 25px;
   }
 
 }
@@ -42,7 +44,7 @@
 }
 
 .input {
-  margin-right: 20px;
+  margin-right: 8px;
 }
 
 .editInput {
@@ -99,7 +101,7 @@
     overflow: auto;
     width: 250px;
     margin-top: 20px;
-    margin-bottom: -10px
+    margin-bottom: 0px
   }
 }
 
@@ -121,7 +123,8 @@
 }
 
 .loadingPopup {
-  margin-left: 20px;
+  
+  vertical-align: middle;
 }
 
 .titleProcess {
@@ -157,10 +160,13 @@
 .hr {
   border-color: #3c3c3c;
   margin: 0px;
+  margin-right: 40px;
+
 
   @media (max-width: 415px) {
     margin-top: 5px;
     margin-bottom: 22px;
+    margin-right: 40px;
   }
 }
 

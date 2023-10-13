@@ -77,6 +77,7 @@ const Main = ({ setId }) => {
           Добавить
         </button>
 
+
         {isPreloader && <img className={s.runningMan} src={preloader} width="45px"/>}
 
       </div>

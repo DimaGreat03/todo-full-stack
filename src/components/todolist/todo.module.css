@@ -3,10 +3,10 @@
   margin-left: 80px;
   margin-right: 80px;
   margin-top: 20px;
-  font-size: 22px;
+  font-size: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 55px;
-  margin-bottom: 50px;  
+  margin-bottom: 50px;
 
   @media (max-width: 415px) {
     margin-left: 10px;
@@ -16,26 +16,27 @@
   }
 }
 
-
 .li {
   cursor: pointer;
   border-style: solid;
   border-width: 0.1px;
   background-color: #252931;
   border-radius: 5px;
-  list-style-type: none;  
+  list-style-type: none;
 
   @media (max-width: 415px) {
     margin-top: 20px;
+    margin-left: 5px;
   }
 }
 
-.li2{
+.li2 {
   cursor: pointer;
   list-style-type: none;
 
   @media (max-width: 415px) {
     margin-top: 20px;
+    margin-left: 5px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -66,39 +67,40 @@
 }
 
 .input {
-  margin: 30px 10px 30px 50px;
+  margin: 0px 10px 10px 20px;
   font-size: 18px;
   width: 500px;
-  height: 30px;
+  height: 35px;
   border-radius: 5px;
   border-style: solid;
   border-width: 0.5px;
   border-color: rgb(255, 255, 255);
-
-  @media (max-width: 415px) {
-    width: 250px;
-    margin: 0px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
-}
-
-.button {
-  padding: 10px;
-  font-size: 17px;
-  border-radius: 7px;
-  background-color: darkslategrey;
+  background-color: #262d3b;
+  outline: none;
   color: white;
 
   @media (max-width: 415px) {
-    font-size: 12px;
+    width: 220px;
+    margin: 0px 10px 0px 20px;
+    font-size: 16px;
+  }
+}
+
+.button {
+  font-size: 18px;
+  background-color: rgb(69, 89, 123);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-right: 5px;
+
+  @media (max-width: 415px) {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
   }
 }
 .button:hover {
-  border-style: solid;
-  border-color: white;
-  border-width: 0.5px;
+  color: rgb(255, 157, 0);
 }
 
 .removeButton {
@@ -130,24 +132,24 @@
 
 .mainTitle {
   color: white;
-  font-size: 30px;
+  font-size: 22px;
   display: flex;
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 40px;
 
-
   @media (max-width: 415px) {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 140px;
+    font-size: 17px;
+    margin-top: 120px;
+    font-family: "Times New Roman", Times, serif;
+    margin-bottom: 15px;
   }
 }
 
 .h1 {
   color: white;
   margin-left: 150px;
-  font-size: 40px; 
+  font-size: 40px;
 }
 
 .category {
@@ -170,8 +172,8 @@
 .clearCalendar {
   margin: 0px 0px 0px 10px;
 }
-  
-  .clear2 {
+
+.clear2 {
   border-style: solid;
   border-width: 0.5px;
   border-color: #d3d3d3;
@@ -182,15 +184,14 @@
 }
 
 .fromDate {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 15px;
   color: rgb(148, 148, 148);
   margin-left: 30px;
   margin-top: -25px;
 
-
   @media (max-width: 415px) {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 15px;
     color: rgb(148, 148, 148);
     margin-left: 30px;
@@ -210,11 +211,15 @@
 .descriptionEmpty {
   font-size: 25px;
   margin: -10px 0px 0px 70px;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 
   @media (max-width: 415px) {
     text-align: center;
     margin: 10px 0px 0px 0px;
   }
+}
+
+.runMan {
+  width: 40px;
+  vertical-align: middle;
 }

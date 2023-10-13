@@ -12,7 +12,7 @@
   color: rgb(254, 254, 254);
   line-height: 45px;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     margin-left: -25px;
     margin-top: 10px;
     width: 360px;
@@ -26,13 +26,13 @@
   border-radius: 10px;
   margin-right: 40px;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     background-color: #252931;
   }
 }
 
 .li:active {
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     background-color: #a6a5a5;
   }
 }
@@ -80,7 +80,7 @@
     margin-bottom: 20px;
     color: white;
 
-    @media (max-width: 415px) {
+    @media (max-width: 428px) {
       font-size: 14px;
     }
 }
@@ -96,7 +96,7 @@
   margin-top: 10px;
   margin-left: 20px;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     font-size: 17px;
     overflow: auto;
     width: 250px;
@@ -140,7 +140,7 @@
   width: 300px;
   height: 30px;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     font-size: 16px;
     width: 200px;
   }
@@ -163,7 +163,7 @@
   margin-right: 40px;
 
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     margin-top: 5px;
     margin-bottom: 22px;
     margin-right: 40px;

@@ -1,7 +1,7 @@
 .wrapperHeader {
   height: 100px;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     margin-top: 25px;
   }
 }
@@ -19,7 +19,7 @@
   border-width: 0.5px;
   text-decoration: none;
 
-  @media (max-width: 414px) {
+  @media (max-width: 428px) {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -43,7 +43,7 @@
   border-width: 0.5px;
   text-decoration: none;
   
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -55,7 +55,7 @@
 }
 
 .buttonDel {
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -69,7 +69,7 @@
 .nav {
 
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Два столбца с равной шириной */
     grid-gap: 0px; /* Дополнительное пространство между элементами, если нужно */

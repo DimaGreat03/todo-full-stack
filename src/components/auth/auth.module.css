@@ -14,7 +14,7 @@
   text-align: center;
   font-family: "roboto";
 
-  @media (max-width: 414px) {
+  @media (max-width: 428px) {
     width: 350px;
     height: 400px;
     font-size: 18px;
@@ -26,7 +26,7 @@
   font-size: 25px;
   margin-bottom: 15px;
 
-  @media (max-width: 414px) {
+  @media (max-width: 428px) {
     width: 250px;
     height: 25px;
     font-size: 18px;
@@ -36,7 +36,7 @@
 .input {
   font-size: 25px;
 
-  @media (max-width: 414px) {
+  @media (max-width: 428px) {
     width: 250px;
     height: 25px;
     font-size: 18px;
@@ -51,7 +51,7 @@
 .zdes {
   color: red;
   cursor: pointer;
-  @media (max-width: 414px) {
+  @media (max-width: 428px) {
     font-size: 20px;
   }
 }
@@ -64,7 +64,7 @@
   background-color: #313a4c;
   color: white;
 
-  @media (max-width: 414px) {
+  @media (max-width: 428px) {
     width: 125px;
     height: 50px;
     font-size: 18px;
@@ -76,4 +76,16 @@
   background-color: #1e242f;
   border-style: solid;
   border-color: white;
+}
+
+.error {
+  margin: 50px 20px 20px 20px;
+}
+
+.buttonClose {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 22px;
+  padding: 10px;
+  border-radius: 7px;
+  color: rgb(203, 62, 2);
 }

@@ -8,7 +8,7 @@
   line-height: 55px;
   margin-bottom: 50px;  
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     margin-left: 10px;
     width: 400px;
     font-size: 18px;
@@ -24,7 +24,7 @@
   border-radius: 5px;
   list-style-type: none;  
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     margin-top: 20px;
   }
 }
@@ -33,7 +33,7 @@
   cursor: pointer;
   list-style-type: none;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -44,13 +44,13 @@
   border-radius: 8px;
   background-color: rgb(52, 60, 80);
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     background-color: #1c212b
   }
 }
 
 .li2:active {
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     background-color: #a6a5a5;
   }
 }
@@ -133,7 +133,7 @@
   margin-left: 150px;
   font-size: 40px;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     font-size: 18px;
     margin-top: 120px;
   }
@@ -144,7 +144,7 @@
   color: rgb(111, 111, 111);
   margin: -30px 0px -10px 50px;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     margin-top: -5px;
     line-height: 40px;
   }
@@ -175,7 +175,7 @@
 
 .data2Format {
    
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     font-size: 14px;
     color: #626262;
     display: contents;
@@ -188,7 +188,7 @@
 
 .cornerData {
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     color: rgb(134, 133, 133);
     font-size: 16px;
     margin-right: -5px;

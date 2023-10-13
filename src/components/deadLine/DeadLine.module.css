@@ -9,7 +9,7 @@
     line-height: 45px;
     margin-top: 30px;
 
-    @media (max-width: 415px) {
+    @media (max-width: 428px) {
       margin-left: 10px;
       width: 400px;
       font-size: 18px;
@@ -26,7 +26,7 @@
     border-radius: 5px;
     list-style-type: none;
 
-    @media (max-width: 415px) {
+    @media (max-width: 428px) {
       line-height: 25px;
     }
 
@@ -36,7 +36,7 @@
     cursor: pointer;
     list-style-type: none;
 
-    @media (max-width: 415px) {
+    @media (max-width: 428px) {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -47,13 +47,13 @@
     border-radius: 8px;
     background-color: rgb(52, 60, 80);
 
-    @media (max-width: 415px) {
+    @media (max-width: 428px) {
       background-color: #1c212b
     }
   }
 
   .li2:active {
-    @media (max-width: 415px) {
+    @media (max-width: 428px) {
       background-color: #a6a5a5;
     }
   }
@@ -92,7 +92,7 @@
     padding: 5px 10px 5px 10px;
     margin-left: 5px;
 
-    @media (max-width: 415px) {
+    @media (max-width: 428px) {
       font-size: 15px;
     }
   }
@@ -127,7 +127,7 @@
     color: white;
     margin-left: 150px;
     font-size: 35px; 
-    @media (max-width: 415px) {
+    @media (max-width: 428px) {
       margin-top: 120px;
       font-size: 16px;
     }
@@ -141,7 +141,7 @@
     margin-bottom: 10px;
     font-family: 'Times New Roman', Times, serif;
 
-    @media (max-width: 415px) {
+    @media (max-width: 428px) {
       font-size: 15px;
       font-family: 'Times New Roman', Times, serif;
       margin-left: 20px;
@@ -169,7 +169,7 @@
     font-size: 17px;
     color: #7e7e7e;
 
-    @media (max-width: 415px) {
+    @media (max-width: 428px) {
       font-size: 16px;
     }
   }

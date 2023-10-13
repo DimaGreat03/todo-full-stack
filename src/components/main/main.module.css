@@ -2,7 +2,7 @@
   margin-left: 60px;
   margin-top: 20px;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     margin-left: 10px;
     width: 400px;
     line-height: 25px;
@@ -19,7 +19,7 @@
   padding: 10px;
   line-height: 35px;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -32,13 +32,13 @@
   padding: 10px;
   border-radius: 10px;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     background-color: #1c212b
   }
 }
 
 .li:active {
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     background-color: #a6a5a5;
   }
   
@@ -59,7 +59,7 @@
   color: white;
   text-align: center;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     font-size: 17px;
     margin-top: 120px;
     font-family: 'Times New Roman', Times, serif;
@@ -79,7 +79,7 @@
   background-color: #262d3b;
   outline: none;
   color: white;
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     width: 220px;
     margin: 0px 0px 0px -75px;
     font-size: 16px;
@@ -94,7 +94,7 @@
   padding: 10px;
   border-radius: 8px;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     margin-left: 10px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 16px;
@@ -124,7 +124,7 @@
   margin-top: -5px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     font-size: 14px;
     font-family: 'Times New Roman', Times, serif;
   }
@@ -153,7 +153,7 @@
   margin-top: 30px;
   margin-left: 135px;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     display: flex;
     text-justify: auto;
     margin: auto;
@@ -164,7 +164,7 @@
   color: white;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
-  @media (max-width: 415px) {
+  @media (max-width: 428px) {
     text-align: center;
   }
 }

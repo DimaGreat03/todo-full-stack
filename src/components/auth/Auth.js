@@ -92,9 +92,9 @@ const Auth = ({ setIsAuth }) => {
             </button>
 
             <div className={s.span}>
-              Или нажмите
+              Или нажмите 
               <span className={s.zdes} onClick={() => setRegOrLog(!regOrLog)}>
-                здесь
+                 здесь  
               </span>
               для {regOrLog ? "регистрации" : "авторизации"}
             </div>

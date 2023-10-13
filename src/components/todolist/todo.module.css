@@ -96,7 +96,8 @@
 
   @media (max-width: 415px) {
     font-family: "Times New Roman", Times, serif;
-    font-size: 16px;
+    font-size: 20px;
+    padding: 10px
   }
 }
 .button:hover {
@@ -220,6 +221,6 @@
 }
 
 .runMan {
-  width: 40px;
+  width: 42px;
   vertical-align: middle;
 }

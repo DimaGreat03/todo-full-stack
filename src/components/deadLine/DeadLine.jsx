@@ -71,7 +71,7 @@ const DeadLine = () => {
   const setHowManyDaysLeft = (untill) => {
     return (
       Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1) <= 0
-       ? <span> сегодня </span>
+       ? <span > сегодня </span>
        : <>  осталось дней: {Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1)}</>
     )
   }
@@ -153,7 +153,7 @@ const DeadLine = () => {
                          <img className={s.calendar} onClick={() =>setSwitch(!switcH) } width="35px" src={calendar}/>
                          
                          {/* дублирование сколько осталось дней до дедлайна */}
-                          {setHowManyDaysLeft(e.untill)}
+                        <span> {setHowManyDaysLeft(e.untill)} </span>
                       </div>
                     ) : null
                   ) : null)

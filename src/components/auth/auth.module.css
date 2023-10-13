@@ -85,8 +85,8 @@
 
 .error {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 19px;
-  margin: 50px 20px 20px 20px;
+  font-size: 22px;
+  margin: 30px 20px 20px 20px;
 }
 
 .buttonClose {
@@ -115,6 +115,10 @@
     margin-left: 15px;
     width: 150px
   }
+}
+
+.loadingGif {
+  margin-top: 20px;
 }
 
 

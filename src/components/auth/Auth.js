@@ -4,30 +4,33 @@ import { instance } from "../api/axios.api";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import icon from "./assets/errorIcon.png";
+import loading from "./assets/loadingPopup.gif";
 
 const Auth = ({ setIsAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [regOrLog, setRegOrLog] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   let navigate = useNavigate();
 
   const registrationHandler = async () => {
     await instance
       .post("/user", { email: email, password: password })
-      .then(
-        (data) =>
-          data.status === 201 &&
-          toast.success("поздравляю чудик - ты создал аккаунт")
-      )
-      .catch((error) =>
+      .then((data) => {
+        data.status === 201 &&
+          toast.success("поздравляю чудик - ты создал аккаунт");
+        setIsLoading(false);
+      })
+      .catch((error) => {
         error.response
           ? error.response.data.message === "This email already exist"
             ? toast.error(error.response.data.message)
             : toast.error(error.response.data.message[0])
-          : setIsError(!isError)
-      );
+          : setIsError(!isError);
+        setIsLoading(false);
+      });
   };
 
   const loginHandler = async () => {
@@ -37,13 +40,15 @@ const Auth = ({ setIsAuth }) => {
         localStorage.setItem("token", data.data.token);
         setIsAuth(true);
         navigate("/incoming");
-        console.log(data);
+        setIsLoading(false);
+        toast.success("пользуйся")
       })
-      .catch((error) =>
+      .catch((error) => {
         error.response
           ? toast.error(error.response.data.message)
-          : setIsError(!isError)
-      );
+          : setIsError(!isError);
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -86,15 +91,21 @@ const Auth = ({ setIsAuth }) => {
               className={s.button}
               onClick={() => {
                 regOrLog ? loginHandler() : registrationHandler();
+                setIsLoading(true);
               }}
             >
               Let's go
             </button>
+            <div>
+              {isLoading && (
+                "...не чуди"
+              )}
+            </div>
 
             <div className={s.span}>
-              Или нажмите 
+              Или нажмите
               <span className={s.zdes} onClick={() => setRegOrLog(!regOrLog)}>
-                 здесь  
+                здесь
               </span>
               для {regOrLog ? "регистрации" : "авторизации"}
             </div>

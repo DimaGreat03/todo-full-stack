@@ -31,7 +31,7 @@ function App() {
         }
       }
     } catch (error) {
-      navigate("/auth")
+      navigate("/")
     }
   };
 

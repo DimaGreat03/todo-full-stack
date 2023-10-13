@@ -92,6 +92,7 @@
 .buttonClose {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 22px;
+  margin-top: -10px;
   padding: 10px;
   border-radius: 7px;
   color: rgb(203, 62, 2);

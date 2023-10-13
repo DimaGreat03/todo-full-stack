@@ -22,9 +22,11 @@ const Auth = ({ setIsAuth }) => {
           toast.success("поздравляю чудик - ты создал аккаунт")
       )
       .catch((error) =>
-        error.response.data.message === "This email already exist"
-          ? toast.error(error.response.data.message)
-          : toast.error(error.response.data.message[0])
+        error.response
+          ? error.response.data.message === "This email already exist"
+            ? toast.error(error.response.data.message)
+            : toast.error(error.response.data.message[0])
+          : setIsError(!isError)
       );
   };
 
@@ -37,7 +39,11 @@ const Auth = ({ setIsAuth }) => {
         navigate("/incoming");
         console.log(data);
       })
-      .catch((error) => error.response? toast.error(error.response.data.message) : setIsError(!isError) );
+      .catch((error) =>
+        error.response
+          ? toast.error(error.response.data.message)
+          : setIsError(!isError)
+      );
   };
 
   return (
@@ -47,9 +53,14 @@ const Auth = ({ setIsAuth }) => {
           Скорее всего создатель проекта снова забыл оставить сервер включенным
           и где нибудь чудит сейчас
           <p>
-            <img src={icon} width="200px" />
+            <img src={icon} className={s.iconError} />
           </p>
-          <button className={s.buttonClose} onClick={() => setIsError(!isError)}>закройся</button>
+          <button
+            className={s.buttonClose}
+            onClick={() => setIsError(!isError)}
+          >
+            закройся
+          </button>
         </div>
       ) : (
         <div>

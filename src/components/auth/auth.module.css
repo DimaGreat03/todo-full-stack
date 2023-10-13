@@ -89,3 +89,26 @@
   border-radius: 7px;
   color: rgb(203, 62, 2);
 }
+.buttonClose:hover {
+  color: black;
+}
+
+.buttonClose:active {
+
+  @media (max-width: 428px) {
+    color: black;
+  }
+}
+
+.iconError {
+
+  width: 220px;
+  margin-left: 30px;
+
+  @media (max-width: 428px) {
+    margin-left: 15px;
+    width: 150px
+  }
+}
+
+

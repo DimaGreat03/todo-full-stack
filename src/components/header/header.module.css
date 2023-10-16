@@ -32,7 +32,7 @@
 
 .currentButton {
   float: right;
-  color: rgb(253, 253, 253);
+  color: rgb(255, 0, 0);
   margin-top: 30px;
   margin-right: 15px;
   font-size: 21px;
@@ -73,5 +73,53 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Два столбца с равной шириной */
     grid-gap: 0px; /* Дополнительное пространство между элементами, если нужно */
+  }
+}
+
+.justButton {
+  float: right;
+  color: rgb(253, 253, 253);
+  margin-top: 30px;
+  margin-right: 15px;
+  font-size: 21px;
+  padding: 15px;
+  border-radius: 7px;
+  background-color: #1c212b;
+  border-style: solid;
+  border-width: 0.5px;
+  text-decoration: none;
+  
+  @media (max-width: 428px) {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    float: none;
+    margin: 10px 10px 0px 15px;
+    font-size: 22px;
+    min-width: 100px;
+  }
+}
+
+.justButton2 {
+  float: right;
+  color: rgb(253, 253, 253);
+  margin-top: 30px;
+  margin-right: 15px;
+  font-size: 21px;
+  padding: 15px;
+  border-radius: 7px;
+  background-color: #1c212b;
+  border-style: solid;
+  border-width: 0.5px;
+  text-decoration: none;
+  
+  @media (max-width: 428px) {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    float: none;
+    margin: 10px 10px 0px 15px;
+    font-size: 22px;
+    min-width: 100px;
   }
 }

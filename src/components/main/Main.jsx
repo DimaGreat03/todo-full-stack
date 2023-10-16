@@ -6,6 +6,7 @@ import dateFormat from "dateformat";
 import SmallSkeleton from "../Skeleton/SkeletonSmall";
 import noHave from "./assets/empty.png"
 import preloader from "./assets/preloader.gif"
+import categoryIcon from "./assets/category.png"
 
 
 const Main = ({ setId }) => {
@@ -113,7 +114,8 @@ const Main = ({ setId }) => {
                   }}
                 >
                     {/* инпут для выделения множества объектов с последующим удалением */}
-                    <input     
+                    <input  
+                      className={s.multyInput}   
                       value={e.id}
                       type="checkbox"
                       onChange={() => {}}
@@ -121,7 +123,7 @@ const Main = ({ setId }) => {
                       onClick={() => handleCheckboxChange(e.id)}
                      />  
                   <Link className={s.link} key={e.id} to={`/todo:${e.id}`}>
-                 <span className={s.title}>{e.title}</span> 
+                 <span className={s.title}><img src={categoryIcon} className={s.categoryIcon}/>{e.title}</span> 
                   <div className={s.fromData}>from: {dateFormat(new Date(), "dd.mm")}</div>
                   </Link>
                   {/* <span className={s.delete} onClick={() => removeCategory(e.id)}>X</span> */}

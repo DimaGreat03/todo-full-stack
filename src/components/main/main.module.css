@@ -175,5 +175,20 @@
 
 .title {
   margin: 0px 0px 0px 10px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 21px;
+}
+.title:hover {
+  color: rgb(251, 130, 0);
+}
+
+.categoryIcon {
+  width: 35px;
+  vertical-align: middle;
+  margin: 0px 10px 0px 0px;
+}
+
+.multyInput {
+  cursor: pointer;
 }
 

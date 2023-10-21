@@ -302,3 +302,12 @@
     margin-top: -10px
   }
 }
+
+.categoryChoose {
+    margin-left: 100px;
+    color: #178369;
+}
+
+.categoryChoose:hover {
+  color: white;
+}

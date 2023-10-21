@@ -28,6 +28,8 @@ const Incoming = () => {
   const [button_id, setButton_id] = useState("")
   const [selectedIds, setSelectedIds] = useState([]);
   const [iconId, setIconId] = useState("")
+  const [move, setMove] = useState(true)
+  const [category, setCategory] = useState([])
 
 
   useEffect(() => {
@@ -35,6 +37,8 @@ const Incoming = () => {
     instance
       .get(`/transactions/incoming`)
       .then((data) => setData(data.data) & setIsLoading(true) & setIsPreloader(false))
+
+      instance.get("/categories").then((data) => setCategory(data.data) );
   }, [watcher]);
 
   i18n.dayNames = [
@@ -110,6 +114,15 @@ const Incoming = () => {
         })
         .then((data) => setWatcher(!watcher));
     }, 250);
+  };
+
+  const moveTo = (id, categoryId) => {
+      instance
+        .patch(`/transactions/transaction/${id}`, {
+          incomingTask: false,
+          category: categoryId, 
+        })
+        .then((data) => setWatcher(!watcher));
   };
 
   const removeTask = (id) => {
@@ -290,7 +303,8 @@ const Incoming = () => {
 
                     {/* картинка календаря при раскрытии попапа */}
                          <img className={s.calendar} onClick={() =>setSwitch(!switcH) } width="35px" src={calendar}/> 
-                      
+                          <span onClick={() => setMove(!move)}>move to</span>
+                          {move && category.map(c => <li className={s.categoryChoose} onClick={() => moveTo(e.id, c.id)}>{c.title}</li>)}
                            {/* отображение даты при раскрытии попапа если есть дедлайн */}
                            {setDateForPopup(e.untill)}
 

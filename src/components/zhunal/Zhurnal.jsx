@@ -27,7 +27,7 @@ const Zhurnal = () => {
   useEffect(() => {
     localStorage.setItem('currentPage', 2)
     instance
-      .get(`/transactions/options?status=false&done=true`)
+      .get(`/transactions/options?done=true`)
       .then((data) => setData(data.data) & console.log(data.data) & setIsSkeleton(false));
   }, [watcher]);
 
@@ -39,6 +39,7 @@ const Zhurnal = () => {
           isDone: false,
           isCheck: false,
           incomingTask: boolean,
+          checkTask: false,
         })
         .then(() => setWatcher(!watcher) & play());
 

@@ -10,9 +10,11 @@ import { i18n } from "dateformat";
 import SmallSkeleton from "../Skeleton/SkeletonSmall";
 import noHave from "./assets/empty.png"
 import runningMan from "./assets/preloader.gif"
+import Move from "../helpers/moving/Move";
 
 
 const Todo = () => {
+
   const [data, setData] = useState([]);
   const [watcherT, setWatcherT] = useState("");
   const [addTask, setAddTask] = useState("");
@@ -24,8 +26,11 @@ const Todo = () => {
   const [li, setLi] = useState(false);
   const [isSkeleton, setIsSkeleton] = useState(true);
   const [isRunMan, setIsRunMan] = useState(false)
+  const [move, setMove] = useState(false)
+  const [menu, setMenu] = useState(["активные ", ' завершенные '])
+  const [checkTask, setCheckTask] = useState(false)
+  const [filterId, setFilterId] = useState(0)
   let navigate = useNavigate()
-
   const year = dateFormat(new Date(), "yyyy")
 
   i18n.dayNames = [
@@ -75,11 +80,10 @@ const Todo = () => {
   useEffect(() => {
     let getUser = localStorage.getItem("user");
     instance
-      .get(`/transactions/${getUser}/options?&limit=30&status=true&done=false`)
+      .get(`/transactions/${getUser}/options?&limit=30&status=true`)
       .then((data) => setData(data.data) & setIsSkeleton(false));
       localStorage.setItem("currentPage", 2)
   }, [watcherT]);
-
 
   const addCategory = () => {
     instance
@@ -93,17 +97,18 @@ const Todo = () => {
         isDeadLine: false,
         lastCheck: false,
         incomingTask: false,
+        checkTask: false,
       })
       .then((data) => setWatcherT(!watcherT) & setIsRunMan(false));
   };
 
-  const updateStatus = (id, isCheck) => {
+  const updateStatus = (id, isCheck, boolean, isDone) => {
     setTimeout(() => {
       instance
         .patch(`/transactions/transaction/${id}`, {
           isCheck: !isCheck,
-          isActive: false,
-          isDone: true,
+          checkTask: !boolean,
+          isDone: !isDone,
         })
         .then((data) => setWatcherT(!watcherT));
     }, 250);
@@ -144,30 +149,40 @@ const Todo = () => {
 
   return (
     <div>
-            {/* подтягивание title туду листа с localStorage */}
-            <h1 className={s.mainTitle}> {localStorage.getItem("title")} </h1>
+      {/* подтягивание title туду листа с localStorage */}
+       <h1 className={s.mainTitle}> {localStorage.getItem("title")} </h1>
 
       {/* инпут для написания задачи */}
-      <input
+       <input
         className={s.input}
         value={addTask}
         onChange={(e) => setAddTask(e.target.value)}
         placeholder="напиши свою задачу"
-      />
+       />
 
       {/* кнопка для отправки задачи на сервер */}
-      <button
+       <button
         className={s.button}
         disabled={addTask == ""}
         onClick={() => addCategory() & setIsRunMan(true)}
-      >
+       >
         +
-      </button>
-      {isRunMan? <img src={runningMan} className={s.runMan}/> : <button className={s.button} onClick={() => navigate("/main")}>назад</button> }
-      <hr />
+       </button>
+
+       {isRunMan? <img src={runningMan} className={s.runMan}/> : <button className={s.button} onClick={() => navigate("/main")}>назад</button> }
+       <hr />
 
       <div className={s.wrapper}>
         {/* метод map, для выставления задач  */}
+
+      <div className={s.fil}>
+        {!isSkeleton && menu.map((e, i) => {
+          return <span className={i == filterId? s.filter : s.filter2} onClick={() => setCheckTask(i == 0 && false || i == 1 && true || i == 2 && null) & setFilterId(i)}>
+            <span className={s.textFilter}>{e}</span>
+           </span>
+         }
+        )}
+      </div>
 
         {isSkeleton 
           ?  <SmallSkeleton/> 
@@ -178,10 +193,12 @@ const Todo = () => {
                </span>
         }
 
+      
         {data.map((e) => {
           return (
             <div>
               {/* начало отрисовывания Li-шки */}
+             {e.checkTask == checkTask && 
               <li
                 key={e.id}
                 className={li ? (popId == e.id ? s.li : s.li2) : s.li2}
@@ -190,13 +207,13 @@ const Todo = () => {
                 <input
                   className={s.checkbox}
                   type="checkbox"
-                  onClick={() => updateStatus(e.id, e.isCheck)}
+                  onClick={() => updateStatus(e.id, e.isCheck, e.checkTask, e.isDone)}
                 />
 
                 {/* title туду листа с сервера а так же установка id Popup */}
               {/* <span className={s.untill}>  {e.untill === null ? e.untill : e.untill.substring()}</span> */}
                 <span
-                  className={s.title}
+                  className={e.isCheck? s.title2 : s.title}
                   onClick={() => {
                     setLi(!li);
                     setPopId(e.id);
@@ -207,7 +224,7 @@ const Todo = () => {
                     setSwitch(false)
                   }}
                 >
-               
+
                {/* установка даты дедлайна в начале титла */}
                {setDateForMainDiv(e.untill)}
 
@@ -216,41 +233,21 @@ const Todo = () => {
                   <div className={s.fromDate}>from: {dateFormat(new Date(), "dd.mm")}</div>
                 </span>
 
-                {/* кнопка удаления задачи из туду листа */}
-                {/* <button
-                  className={s.removeButton}
-                  onClick={() =>removeTask(e.id, e.title, e.createdAd, e.createdAdTime)}
-                >
-                  x
-                </button> */}
-
-
-                {/* Кнопка времени, при нажатии на которую происходит switch */}
-                {/* <span
-                  className={s.time}
-                  onClick={() => setSwitch(!switcH) & setSwitchId(e.id)}
-                >
-                  {switcH
-                    ? switchId == e.id
-                      ? e.createdAdTime
-                      : e.createdAd
-                    : e.createdAd}
-                </span> */}
-                {/* выдвижная навигация для Popup и сложный css для выделения фона при нажатии */}
                 {isPopupOpen &&
                   (isPopupOpen ? (
                     e.id == popId ? (
-                    
                       <div>
                         {switcH?  <Calendary id={e.id} data={e.untill} watcher={watcherT} setWatcher={setWatcherT}/>  :  <Popup setWatcher={setWatcherT} watcher={watcherT}/>}    
                          <img className={s.calendar} onClick={() =>setSwitch(!switcH) } width="35px" src={calendar}/> 
                          {e.untill && dateFormat(e.untill, " dddd, mmmm d") } 
                          {e.untill && <span className={s.clear2} onClick={() => clearDate(e.id)}>clear</span>}
+                         <span onClick={() => setMove(!move)}>move to</span>
+                         {move && <Move taskId={e.id} setWatcher={setWatcherT}/>}
                       </div>
                     ) : null
                   ) : null)}
                   
-              </li>
+              </li>}
             </div>
           );
         })}

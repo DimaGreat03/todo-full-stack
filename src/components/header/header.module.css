@@ -19,7 +19,6 @@
   border-width: 0.5px;
   text-decoration: none;
   border-color: aliceblue;
-  color: rgb(255, 255, 255);
 
   @media (max-width: 428px) {
     text-align: center;
@@ -29,8 +28,6 @@
     margin: 10px 10px 0px 15px;
     font-size: 22px;
     min-width: 100px;
-    border-color: aliceblue;
-    color: rgb(255, 255, 255);
   }
 }
 
@@ -47,7 +44,6 @@
   border-width: 0.5px;
   text-decoration: none;
   border-color: aliceblue;
-  color: red;
   
   @media (max-width: 428px) {
     text-align: center;
@@ -57,9 +53,11 @@
     margin: 10px 10px 0px 15px;
     font-size: 22px;
     min-width: 100px;
-    border-color: aliceblue;
-    color: red;
   }
+}
+
+.button:hover{
+  color: red
 }
 .currentButton:hover{
   color: red

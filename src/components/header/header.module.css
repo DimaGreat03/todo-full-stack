@@ -19,7 +19,7 @@
   border-width: 0.5px;
   text-decoration: none;
   border-color: aliceblue;
-  color: red;
+  color: rgb(255, 255, 255);
 
   @media (max-width: 428px) {
     text-align: center;

@@ -1,6 +1,6 @@
 .wrapper {
   color: rgb(230, 230, 230);
-  margin-left: 80px;
+  margin-left: 20px;
   margin-right: 80px;
   margin-top: 20px;
   font-size: 23px;
@@ -314,4 +314,8 @@
 
 .move {
   margin: 0px 0px 0px 50px;
+}
+
+.radio {
+  cursor: pointer;
 }

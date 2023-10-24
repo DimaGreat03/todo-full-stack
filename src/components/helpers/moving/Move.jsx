@@ -15,6 +15,7 @@ const Move = ({ taskId, setWatcher }) => {
         incomingTask: boolean,
         category: categoryId,
         checkTask: false,
+        inTodo: true,
       })
       .then(() => setWatcher("перерисовать страницу incoming"));
   };

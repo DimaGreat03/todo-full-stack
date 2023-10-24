@@ -193,6 +193,13 @@
     font-size: 16px;
     margin-right: -5px;
   }
+}
 
+.category2 {
+  color: #7d7d7d;
+  margin-left: 0px;
+}
+.category2:hover {
+  color: rgb(255, 119, 0)
 }
 

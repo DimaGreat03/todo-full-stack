@@ -6,6 +6,7 @@ import sound from "./assets/close.mp3";
 import dateFormat from "dateformat";
 import Popup from "../popup/Popup";
 import SmallSkeleton from "../Skeleton/SkeletonSmall";
+import { useNavigate } from "react-router";
 
 
 const Zhurnal = () => {
@@ -19,7 +20,7 @@ const Zhurnal = () => {
   const [checkInput, setCheckInput] = useState(true)
   const [selectedIds, setSelectedIds] = useState([]);
   const [isSkeleton, setIsSkeleton] = useState(true);
-
+  const navigate = useNavigate()
 
 
   const [play] = useSound(sound);
@@ -28,7 +29,7 @@ const Zhurnal = () => {
     localStorage.setItem('currentPage', 2)
     instance
       .get(`/transactions/options?done=true`)
-      .then((data) => setData(data.data) & console.log(data.data) & setIsSkeleton(false));
+      .then((data) => setData(data.data) & setIsSkeleton(false));
   }, [watcher]);
 
   const returnTask = (id, boolean) => {
@@ -86,6 +87,7 @@ const Zhurnal = () => {
         </span>
         {isSkeleton && <SmallSkeleton/>}
         {/* метод map, для выставления задач  */}
+
         {data.map((e) => {
           return (
             <div key={e.id}>
@@ -125,7 +127,7 @@ const Zhurnal = () => {
                   }}
                 >
                   {e.title} 
-                  <div className={s.category}>{e.category? e.category.title : "incoming"} <span className={s.data2Format}> - {dateFormat(e.createdAt, "dd.mm.yy")}</span>
+                  <div className={s.category}>{e.category? <span className={s.category2} onClick={() => navigate(`/todo:${e.category.id}`) & localStorage.setItem('user', e.category.id) & localStorage.setItem('title', e.category.title)}> {e.category.title}</span> : "incoming"} <span className={s.data2Format}> - {dateFormat(e.createdAt, "dd.mm.yy")}</span>
               </div>
                 </span>
 

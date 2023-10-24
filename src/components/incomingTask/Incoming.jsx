@@ -101,6 +101,7 @@ const Incoming = () => {
         incomingTask: true,
         notes: "",
         checkTask: true,
+        inTodo: false,
       })
       .then((data) => setWatcher(!watcher));
   };
@@ -239,6 +240,7 @@ const Incoming = () => {
                       onChange={() => {}}
                       checked={selectedIds.includes(e.id)}
                       onClick={() => handleCheckboxChange(e.id)}
+                      className={s.radio}
                      />  
 
                   {/* title туду листа с сервера а так же установка id Popup */}

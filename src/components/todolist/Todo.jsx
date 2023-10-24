@@ -11,6 +11,7 @@ import SmallSkeleton from "../Skeleton/SkeletonSmall";
 import noHave from "./assets/empty.png"
 import runningMan from "./assets/preloader.gif"
 import Move from "../helpers/moving/Move";
+import accept from "./assets/accept.png"
 
 
 const Todo = () => {
@@ -30,6 +31,8 @@ const Todo = () => {
   const [menu, setMenu] = useState(["активные ", ' завершенные '])
   const [checkTask, setCheckTask] = useState(false)
   const [filterId, setFilterId] = useState(0)
+  const [goldenTouch, setGoldenTouch] = useState(false)
+  const [touchId, setTouchId] = useState("")
   let navigate = useNavigate()
   const year = dateFormat(new Date(), "yyyy")
 
@@ -80,7 +83,7 @@ const Todo = () => {
   useEffect(() => {
     let getUser = localStorage.getItem("user");
     instance
-      .get(`/transactions/${getUser}/options?&limit=30&status=true`)
+      .get(`/transactions/${getUser}/todo`)
       .then((data) => setData(data.data) & setIsSkeleton(false));
       localStorage.setItem("currentPage", 2)
   }, [watcherT]);
@@ -98,17 +101,20 @@ const Todo = () => {
         lastCheck: false,
         incomingTask: false,
         checkTask: false,
+        inTodo: true,
       })
       .then((data) => setWatcherT(!watcherT) & setIsRunMan(false));
   };
 
-  const updateStatus = (id, isCheck, boolean, isDone) => {
+  const updateStatus = (id, isCheck, boolean, isDone, isDeadLine) => {
     setTimeout(() => {
       instance
         .patch(`/transactions/transaction/${id}`, {
           isCheck: !isCheck,
           checkTask: !boolean,
           isDone: !isDone,
+          isDeadLine: true,
+          isActive: true,
         })
         .then((data) => setWatcherT(!watcherT));
     }, 250);
@@ -177,7 +183,7 @@ const Todo = () => {
 
       <div className={s.fil}>
         {!isSkeleton && menu.map((e, i) => {
-          return <span className={i == filterId? s.filter : s.filter2} onClick={() => setCheckTask(i == 0 && false || i == 1 && true || i == 2 && null) & setFilterId(i)}>
+          return <span className={i == filterId? s.filter : s.filter2} onClick={() => setCheckTask(i == 0 && false || i == 1 && true || i == 2 && null) & setFilterId(i) & setGoldenTouch(!goldenTouch) & setTouchId("")}>
             <span className={s.textFilter}>{e}</span>
            </span>
          }
@@ -204,11 +210,21 @@ const Todo = () => {
                 className={li ? (popId == e.id ? s.li : s.li2) : s.li2}
               >
                 {/* checkbox задачи */}
-                <input
-                  className={s.checkbox}
-                  type="checkbox"
-                  onClick={() => updateStatus(e.id, e.isCheck, e.checkTask, e.isDone)}
-                />
+                
+
+                {
+                  e.checkTask
+                    ? <img 
+                      onClick={() => updateStatus(e.id, e.isCheck, e.checkTask, e.isDone, e.isDeadLine) & setGoldenTouch(true) & setTouchId(e.id)} 
+                      src={accept} width="25px"
+                      className={e.id == touchId && goldenTouch? s.acceptIcon2 : s.acceptIcon}/> 
+                    : <input
+                         className={s.checkbox}
+                         type="checkbox"
+                         onClick={() => updateStatus(e.id, e.isCheck, e.checkTask, e.isDone, e.isDeadLine)}
+                       />
+                }
+                
 
                 {/* title туду листа с сервера а так же установка id Popup */}
               {/* <span className={s.untill}>  {e.untill === null ? e.untill : e.untill.substring()}</span> */}
@@ -226,7 +242,7 @@ const Todo = () => {
                 >
 
                {/* установка даты дедлайна в начале титла */}
-               {setDateForMainDiv(e.untill)}
+               {!e.isCheck && setDateForMainDiv(e.untill)}
 
                {/* отрисовка титла */}
                   {e.title}
@@ -238,15 +254,16 @@ const Todo = () => {
                     e.id == popId ? (
                       <div>
                         {switcH?  <Calendary id={e.id} data={e.untill} watcher={watcherT} setWatcher={setWatcherT}/>  :  <Popup setWatcher={setWatcherT} watcher={watcherT}/>}    
-                         <img className={s.calendar} onClick={() =>setSwitch(!switcH) } width="35px" src={calendar}/> 
-                         {e.untill && dateFormat(e.untill, " dddd, mmmm d") } 
-                         {e.untill && <span className={s.clear2} onClick={() => clearDate(e.id)}>clear</span>}
-                         <span onClick={() => setMove(!move)}>move to</span>
-                         {move && <Move taskId={e.id} setWatcher={setWatcherT}/>}
+                         {!e.isCheck &&  <img className={s.calendar} onClick={() =>setSwitch(!switcH) } width="35px" src={calendar}/> }
+                         {!e.isCheck && e.untill && dateFormat(e.untill, " dddd, mmmm d") } 
+                         {!e.isCheck && e.untill && <span className={s.clear2} onClick={() => clearDate(e.id)}>clear</span>}
+                        <div className={s.move}> 
+                          {!e.isCheck && <span onClick={() => setMove(!move)}>move to</span>}
+                          {!e.isCheck && move &&  <Move taskId={e.id} setWatcher={setWatcherT}/>}
+                        </div>
                       </div>
                     ) : null
                   ) : null)}
-                  
               </li>}
             </div>
           );

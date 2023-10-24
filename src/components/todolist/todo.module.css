@@ -1,6 +1,6 @@
 .wrapper {
   color: rgb(230, 230, 230);
-  margin-left: 40px;
+  margin-left: 20px;
   margin-right: 80px;
   margin-top: 20px;
   font-size: 20px;
@@ -254,7 +254,27 @@
   @media (max-width: 428px) {
     margin: 0px 0px 0px 70px;
   }
-  
+}
+
+.acceptIcon {
+  opacity: 0.3;
+  vertical-align: middle;
+}
+.acceptIcon:hover {
+  opacity: 0.6;
+}
+
+.acceptIcon2 {
+  opacity: 1;
+  vertical-align: middle;
+}
+
+.move {
+  margin: -10px 0px 0px 50px;
+
+  @media (max-width: 428px) {
+    margin-left: 40px;
+  }
 }
 
 

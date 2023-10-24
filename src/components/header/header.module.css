@@ -29,9 +29,6 @@
     min-width: 100px;
   }
 }
-.button:hover {
-  color: rgb(255, 255, 255);
-}
 
 .currentButton {
   float: right;
@@ -55,9 +52,6 @@
     font-size: 22px;
     min-width: 100px;
   }
-}
-.currentButton:hover {
-  color: red;
 }
 
 .buttonDel {

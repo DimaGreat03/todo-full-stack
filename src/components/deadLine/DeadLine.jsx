@@ -38,13 +38,16 @@ const DeadLine = () => {
     setInDay(diffInDays +1)
   }
 
-  const updateStatus = (id, isCheck) => {
+  const updateStatus = (id, isCheck, inTodo) => {
     setTimeout(() => {
       instance
         .patch(`/transactions/transaction/${id}`, {
           isCheck: !isCheck,
           isActive: false,
           isDone: true,
+          incomingTask: false,
+          inTodo: inTodo? true : false,
+          checkTask: true,
         })
         .then((data) => setWatcher(!watcher));
     }, 250);
@@ -111,7 +114,7 @@ const DeadLine = () => {
                 <input
                   className={s.checkbox}
                   type="checkbox"
-                  onClick={() => updateStatus(e.id, e.isCheck)}
+                  onClick={() => updateStatus(e.id, e.isCheck, e.inTodo)}
                 />
 
                 {/* title туду листа с сервера а так же установка id Popup */}

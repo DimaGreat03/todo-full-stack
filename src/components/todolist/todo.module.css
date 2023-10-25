@@ -60,11 +60,12 @@
 .title {
   margin-left: 10px;
   line-height: -10px;
+  color: #ffffff;
 }
 .title2 {
   margin-left: 10px;
   line-height: -10px;
-  color: #646464;
+  color: #848484;
 }
 
 .checkbox {
@@ -72,7 +73,7 @@
 }
 
 .input {
-  margin: 0px 10px 10px 20px;
+  margin: 14px 10px 20px 50px;
   font-size: 18px;
   width: 500px;
   height: 35px;

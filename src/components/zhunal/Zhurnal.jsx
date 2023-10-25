@@ -32,7 +32,7 @@ const Zhurnal = () => {
       .then((data) => setData(data.data) & setIsSkeleton(false));
   }, [watcher]);
 
-  const returnTask = (id, boolean) => {
+  const returnTask = (id, boolean, isDeadline) => {
     setTimeout(() => {
       instance
         .patch(`/transactions/transaction/${id}`, {

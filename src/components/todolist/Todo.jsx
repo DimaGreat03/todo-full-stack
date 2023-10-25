@@ -110,10 +110,22 @@ const Todo = () => {
     setTimeout(() => {
       instance
         .patch(`/transactions/transaction/${id}`, {
-          isCheck: !isCheck,
-          checkTask: !boolean,
-          isDone: !isDone,
-          isDeadLine: true,
+          isCheck: false,
+          checkTask: true,
+          isDone: true,
+          isActive: false,
+        })
+        .then((data) => setWatcherT(!watcherT));
+    }, 250);
+  };
+
+  const updateImg = (id) => {
+    setTimeout(() => {
+      instance
+        .patch(`/transactions/transaction/${id}`, {
+          isCheck: false,
+          checkTask: false,
+          isDone: false,
           isActive: true,
         })
         .then((data) => setWatcherT(!watcherT));
@@ -215,7 +227,7 @@ const Todo = () => {
                 {
                   e.checkTask
                     ? <img 
-                      onClick={() => updateStatus(e.id, e.isCheck, e.checkTask, e.isDone, e.isDeadLine) & setGoldenTouch(true) & setTouchId(e.id)} 
+                      onClick={() => updateImg(e.id, e.isCheck, e.checkTask, e.isDone, e.isDeadLine) & setGoldenTouch(true) & setTouchId(e.id)} 
                       src={accept} width="25px"
                       className={e.id == touchId && goldenTouch? s.acceptIcon2 : s.acceptIcon}/> 
                     : <input
@@ -229,7 +241,7 @@ const Todo = () => {
                 {/* title туду листа с сервера а так же установка id Popup */}
               {/* <span className={s.untill}>  {e.untill === null ? e.untill : e.untill.substring()}</span> */}
                 <span
-                  className={e.isCheck? s.title2 : s.title}
+                  className={e.checkTask? s.title2 : s.title}
                   onClick={() => {
                     setLi(!li);
                     setPopId(e.id);
@@ -254,12 +266,12 @@ const Todo = () => {
                     e.id == popId ? (
                       <div>
                         {switcH?  <Calendary id={e.id} data={e.untill} watcher={watcherT} setWatcher={setWatcherT}/>  :  <Popup setWatcher={setWatcherT} watcher={watcherT}/>}    
-                         {!e.isCheck &&  <img className={s.calendar} onClick={() =>setSwitch(!switcH) } width="35px" src={calendar}/> }
-                         {!e.isCheck && e.untill && dateFormat(e.untill, " dddd, mmmm d") } 
-                         {!e.isCheck && e.untill && <span className={s.clear2} onClick={() => clearDate(e.id)}>clear</span>}
+                         {!e.checkTask &&  <img className={s.calendar} onClick={() =>setSwitch(!switcH) } width="35px" src={calendar}/> }
+                         {!e.checkTask && e.untill && dateFormat(e.untill, " dddd, mmmm d") } 
+                         {!e.checkTask && e.untill && <span className={s.clear2} onClick={() => clearDate(e.id)}>clear</span>}
                         <div className={s.move}> 
-                          {!e.isCheck && <span onClick={() => setMove(!move)}>move to</span>}
-                          {!e.isCheck && move &&  <Move taskId={e.id} setWatcher={setWatcherT}/>}
+                          {!e.checkTask && <span onClick={() => setMove(!move)}>move to</span>}
+                          {!e.checkTask && move &&  <Move taskId={e.id} setWatcher={setWatcherT}/>}
                         </div>
                       </div>
                     ) : null

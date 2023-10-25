@@ -131,7 +131,7 @@
 .h1 {
   color: white;
   margin-left: 150px;
-  font-size: 40px;
+  font-size: 35px;
 
   @media (max-width: 428px) {
     font-size: 18px;

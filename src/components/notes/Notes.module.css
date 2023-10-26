@@ -34,11 +34,21 @@
   list-style-type: none;
   cursor: pointer;
   margin: 0px 20px 0px 10px;
+  
 }
 .ul:hover {
   background-color: #616161;
   margin: 0px 20px 0px 10px;
   color: #ff8000;
+}
+
+.li {
+  
+  @media (max-width: 428px) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }
 
 .input {

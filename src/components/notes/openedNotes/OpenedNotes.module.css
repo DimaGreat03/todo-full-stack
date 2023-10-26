@@ -20,4 +20,10 @@
 
 .h1{
     margin: 20px 0px 20px 80px;
+
+    @media (max-width: 428px) {
+      margin-top: 130px;
+      margin-left: 10px;
+      font-size: 18px;
+    }
 }

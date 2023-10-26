@@ -1,45 +1,84 @@
-
-
 .wrapper {
-    color: white;
+  color: white;
 }
 
 .textarea {
-    background-color: #1c212b;
-    color: rgb(255, 255, 255);
-    border-style: none;
-    font-size: 18px;
-    width: 1000px;
-    outline: none;
-    margin-bottom: -10px;
-    margin-top: 10px;
-    margin-left: 20px;
-  
-    @media (max-width: 428px) {
-      font-size: 17px;
-      overflow: auto;
-      width: 250px;
-      margin-top: 20px;
-      margin-bottom: 0px
-    }
-  }
+  background-color: #1c212b;
+  color: rgb(255, 255, 255);
+  border-style: none;
+  font-size: 18px;
+  width: 1000px;
+  outline: none;
+  margin-bottom: -10px;
+  margin-top: 10px;
+  margin-left: 20px;
 
-  .hr {
-    margin-bottom: 20px;
-  }
 
-  .ul {
+  @media (max-width: 428px) {
+    font-size: 17px;
+    overflow: auto;
+    width: 250px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+  }
+}
+
+.hr {
+  margin-bottom: 20px;
+}
+
+.ul {
+  font-size: 20px;
+  margin: 0px;
+  line-height: 50px;
+  list-style-type: none;
+  cursor: pointer;
+  margin: 0px 20px 0px 10px;
+}
+.ul:hover {
+  background-color: #616161;
+  margin: 0px 20px 0px 10px;
+  color: #ff8000;
+}
+
+.input {
+  margin: 14px 10px 20px 50px;
+  font-size: 18px;
+  width: 500px;
+  height: 35px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgb(255, 255, 255);
+  background-color: #262d3b;
+  outline: none;
+  color: white;
+
+  @media (max-width: 428px) {
+    width: 220px;
+    margin: 0px 10px 0px 20px;
+    font-size: 16px;
+  }
+}
+
+.button {
+  font-size: 18px;
+  background-color: rgb(69, 89, 123);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-right: 5px;
+
+  @media (max-width: 428px) {
+    font-family: "Times New Roman", Times, serif;
     font-size: 20px;
-    margin: 0px;
-    line-height: 50px;
-    list-style-type: none;
-    cursor: pointer;
-    margin: 0px 20px 0px 10px;
+    padding: 10px;
   }
-  .ul:hover{
-    background-color: #616161;
-    margin: 0px 20px 0px 10px;
-    color: #ff8000;
-  }
+}
+.button:hover {
+  color: rgb(255, 157, 0);
+}
 
-
+.h1 {
+  margin-left: 80px;
+}

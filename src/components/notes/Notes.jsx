@@ -27,12 +27,12 @@ const Notes = () => {
 
   return (
     <div className={s.wrapper}>
-      <h1>Notes</h1>
+      <h1 className={s.h1}>Notes</h1>
 
-      <input value={addNote} onChange={(e) => setAddNote(e.target.value)} />
-      <button onClick={() => addNewNote()}>+</button>
+      <input className={s.input} value={addNote} onChange={(e) => setAddNote(e.target.value)} />
+      <button className={s.button} onClick={() => addNewNote()}>+</button>
 
-      <hr className={s.hr}/>
+      <hr className={s.hr} />
       {data.map((e) => {
         return (
           <div className={s.divForUl}>
@@ -46,13 +46,12 @@ const Notes = () => {
                   localStorage.setItem("noteId", e.id)
                 }
               >
-               📃 {e.title}
+                📃 {e.title}
               </li>
             </ul>
           </div>
         );
       })}
-
     </div>
   );
 };

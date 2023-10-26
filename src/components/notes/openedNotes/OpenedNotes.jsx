@@ -15,19 +15,21 @@ const OpenedNotes = () => {
 
   const updateNotes = (id) => {
     instance
-      .patch(`/notes/${localStorage.getItem('noteId')}`, {
+      .patch(`/notes/${localStorage.getItem("noteId")}`, {
         letters: value,
       })
-      .then(() => setWatcher(!watcher) & localStorage.setItem('openedNotes', value))
+      .then(
+        () => setWatcher(!watcher) & localStorage.setItem("openedNotes", value)
+      );
   };
 
   return (
     <div className={s.wrapper}>
-
-        <h1 className={s.h1}>{localStorage.getItem("titleNotes")}</h1>
-        <hr/>
+      <h1 className={s.h1}>{localStorage.getItem("titleNotes")}</h1>
+      <hr />
 
       <textarea
+        spellcheck="false"
         placeholder="notes"
         className={s.textarea}
         ref={textareaRef}

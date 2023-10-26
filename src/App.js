@@ -12,6 +12,8 @@ import Todo from "./components/todolist/Todo";
 import Zhurnal from "./components/zhunal/Zhurnal";
 import DeadLine from "./components/deadLine/DeadLine";
 import Incoming from "./components/incomingTask/Incoming";
+import Notes from "./components/notes/Notes";
+import OpenedNotes from "./components/notes/openedNotes/OpenedNotes";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -47,7 +49,8 @@ function App() {
           ? 
           <Route element={<PrivateRouts isAuth={isAuth} />}>
             <Route path="/main" element={<Main setId={setId} />} />
-            <Route path="/deleted" element={<DeletedTasks />} />
+            <Route path="/notes" element={<Notes />} />
+            <Route path="/opened-notes" element={<OpenedNotes />} />
             <Route path={`todo:${getUserFromLocalStorage}`} element={<Todo />}/>
             <Route path="/zhurnal" element={<Zhurnal />} />
             <Route path="/dead-line" element={<DeadLine />} />

@@ -19,7 +19,7 @@ const Header = ({isAuth, setIsAuth}) => {
         isAuth ? 
         <nav  className={s.nav}>
            <NavLink to="/" onClick={() => setIsAuth(!isAuth) & removeToken()} className={active => active.isActive? s.currentButton : s.button}>🔐 выход</NavLink>
-           <button className={s.button}>not active</button>   
+           <NavLink to={"/notes"} className={active => active.isActive? s.currentButton : s.button}>🗂 Notes</NavLink>  
            <NavLink to={"/main"} className={active => active.isActive? s.currentButton : s.button}>🗂 Разделы</NavLink>
            <NavLink to="/zhurnal" className={active => active.isActive? s.currentButton : s.button}>📒 Журнал</NavLink>
            <NavLink to="/dead-line" className={active => active.isActive? s.currentButton : s.button}>📅 Календарь</NavLink>

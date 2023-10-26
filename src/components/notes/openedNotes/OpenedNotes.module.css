@@ -1,0 +1,19 @@
+.textarea {
+  background-color: #1c212b;
+  color: rgb(255, 255, 255);
+  border-style: none;
+  font-size: 18px;
+  width: 1000px;
+  outline: none;
+  margin-bottom: -10px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.wrapper {
+    color: white;
+}
+
+.h1{
+    margin: 20px 0px 20px 80px;
+}

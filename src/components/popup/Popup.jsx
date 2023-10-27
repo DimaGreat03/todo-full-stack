@@ -133,9 +133,9 @@ const Popup = ({setWatcher, watcher}) => {
                         onChange={() => {}}
                         onClick={() => updateStatus(e.id, e.isCheck)}
                       />
-                     <span className={e.isCheck? s.titleProcess : undefined} onClick={() => setDeepPopup(!deepPopup) & setDeepPopupId(e.id) & localStorage.setItem("deepNotes", e.notes) & localStorage.setItem("deepId", e.id)}> {e.title} {e.notes !== "" && <img src={haveIcon} className={e.isCheck? s.glas :s.glasActive}/>} </span>
                      <span className={e.id !== button_id? s.popupButton : s.popupButtonProcess} onClick={() => removePopup(e.id) & setButton_id(e.id)}> X </span>
-                    <img className={s.iconEdit} src={iconEdit} width="25px" onClick={() => setEdit(true) & setPopId(e.id) & setTitle(e.title)} />
+                     <img className={s.iconEdit} src={iconEdit} width="25px" onClick={() => setEdit(true) & setPopId(e.id) & setTitle(e.title)} />
+                     <span className={e.isCheck? s.titleProcess : undefined} onClick={() => setDeepPopup(!deepPopup) & setDeepPopupId(e.id) & localStorage.setItem("deepNotes", e.notes) & localStorage.setItem("deepId", e.id)}> {e.title} {e.notes !== "" && <img src={haveIcon} className={e.isCheck? s.glas :s.glasActive}/>} </span>
                      </li>
                      </ul>
                      

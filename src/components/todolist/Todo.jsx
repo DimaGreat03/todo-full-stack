@@ -33,6 +33,7 @@ const Todo = () => {
   const [filterId, setFilterId] = useState(0)
   const [goldenTouch, setGoldenTouch] = useState(false)
   const [touchId, setTouchId] = useState("")
+  const [selectedIds, setSelectedIds] = useState([]);
   let navigate = useNavigate()
   const year = dateFormat(new Date(), "yyyy")
 
@@ -164,6 +165,26 @@ const Todo = () => {
     )
   }
 
+  function handleCheckboxChange(id) {
+
+    if(selectedIds.includes(id)) {
+      let newOne = selectedIds.filter(e => e !== id)
+      setSelectedIds(newOne)
+    } else {
+      selectedIds.push(id)
+    }
+    setWatcherT(!watcherT)
+  }
+
+  const removeMany = () => {
+    instance
+     .delete("/transactions/delete", {
+       data: {ids: selectedIds}
+     })
+     .then((data) => setWatcherT(!watcherT))
+     .catch(e => console.log(e))
+ };
+
 
   return (
     <div>
@@ -193,14 +214,24 @@ const Todo = () => {
       <div className={s.wrapper}>
         {/* метод map, для выставления задач  */}
 
-      <div className={s.fil}>
+
+    {/* меню на выбор АКТИВНЫЕ или ЗАВЕРШЕННЫЕ */}
+      {data.length !== 0 && <div className={s.fil}>
         {!isSkeleton && menu.map((e, i) => {
           return <span className={i == filterId? s.filter : s.filter2} onClick={() => setCheckTask(i == 0 && false || i == 1 && true || i == 2 && null) & setFilterId(i) & setGoldenTouch(!goldenTouch) & setTouchId("")}>
             <span className={s.textFilter}>{e}</span>
            </span>
          }
         )}
-      </div>
+      </div>}
+
+    {/* кнопка для мультиудаления */}
+      {data.length !== 0 && <span className={!selectedIds.length? s.buttonDeleteForever : s.buttonDeleteForeverStart  } 
+            onClick={() => removeMany() & setSelectedIds([])}
+            disabled={!selectedIds.length}
+      > 
+          Удалить навсегда 
+      </span>}
 
         {isSkeleton 
           ?  <SmallSkeleton/> 
@@ -230,11 +261,20 @@ const Todo = () => {
                       onClick={() => updateImg(e.id, e.isCheck, e.checkTask, e.isDone, e.isDeadLine) & setGoldenTouch(true) & setTouchId(e.id)} 
                       src={accept} width="25px"
                       className={e.id == touchId && goldenTouch? s.acceptIcon2 : s.acceptIcon}/> 
-                    : <input
+                    : <><input
                          className={s.checkbox}
                          type="checkbox"
                          onClick={() => updateStatus(e.id, e.isCheck, e.checkTask, e.isDone, e.isDeadLine)}
-                       />
+                      />
+                        <input  
+                        className={s.multyInput}   
+                        value={e.id}
+                        type="radio"
+                        onChange={() => {}}
+                        checked={selectedIds.includes(e.id)}
+                        onClick={() => handleCheckboxChange(e.id)}
+                       /> 
+                      </> 
                 }
                 
 

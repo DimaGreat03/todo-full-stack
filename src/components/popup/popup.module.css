@@ -13,7 +13,7 @@
   line-height: 45px;
 
   @media (max-width: 428px) {
-    margin-left: -25px;
+    margin-left: -45px;
     margin-top: 10px;
     width: 360px;
     font-size: 17px;
@@ -44,7 +44,7 @@
 }
 
 .input {
-  margin-right: 8px;
+  margin-right: 0px;
 }
 
 .editInput {
@@ -119,7 +119,7 @@
 
 .iconEdit {
   margin-left: 5px;
-  vertical-align: text-top;
+  vertical-align: bottom;
 }
 
 .loadingPopup {

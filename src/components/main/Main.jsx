@@ -124,7 +124,7 @@ const Main = ({ setId }) => {
                      />  
                   <Link className={s.link} key={e.id} to={`/todo:${e.id}`}>
                  <span className={s.title}><img src={categoryIcon} className={s.categoryIcon}/>{e.title}</span> 
-                  <div className={s.fromData}>from: {dateFormat(new Date(), "dd.mm")}</div>
+                  <div className={s.fromData}>from: {dateFormat(e.createdAt, "dd.mm")}</div>
                   </Link>
                   {/* <span className={s.delete} onClick={() => removeCategory(e.id)}>X</span> */}
                 </li>

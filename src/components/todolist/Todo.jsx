@@ -294,11 +294,11 @@ const Todo = () => {
                 >
 
                {/* установка даты дедлайна в начале титла */}
-               {!e.isCheck && setDateForMainDiv(e.untill)}
+               {e.isActive && setDateForMainDiv(e.untill)}
 
                {/* отрисовка титла */}
                   {e.title}
-                  <div className={s.fromDate}>from: {dateFormat(new Date(), "dd.mm")}</div>
+                  <div className={s.fromDate}>from: {dateFormat(e.createdAt, "dd.mm")}</div>
                 </span>
 
                 {isPopupOpen &&

@@ -279,21 +279,27 @@
 }
 
 .buttonDeleteForever {
-  margin-left: 120px;
+  margin-left: 200px;
   font-size: 18px;
   padding: 5px;
   border-radius: 5px;
   color: rgb(109, 109, 109);
   cursor: default;
+  @media (max-width: 428px) {
+    margin-left: 120px;
+  }
 }
 
 .buttonDeleteForeverStart {
-  margin-left: 120px;
+  margin-left: 200px;
   font-size: 18px;
   padding: 5px;
   border-radius: 5px;
   color: rgb(255, 128, 0);
   cursor: pointer;
+  @media (max-width: 428px) {
+    margin-left: 120px;
+  }
 }
 
 .move {

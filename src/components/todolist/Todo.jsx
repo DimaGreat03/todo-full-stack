@@ -310,7 +310,7 @@ const Todo = () => {
                          {!e.checkTask && e.untill && dateFormat(e.untill, " dddd, mmmm d") } 
                          {!e.checkTask && e.untill && <span className={s.clear2} onClick={() => clearDate(e.id)}>clear</span>}
                         <div className={s.move}> 
-                          {!e.checkTask && <span onClick={() => setMove(!move)}>move to</span>}
+                          {!e.checkTask && <span className={s.move} onClick={() => setMove(!move)}>move to</span>}
                           {!e.checkTask && move &&  <Move taskId={e.id} setWatcher={setWatcherT}/>}
                         </div>
                       </div>

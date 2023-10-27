@@ -315,6 +315,9 @@
 
 .move {
   margin: 0px 0px 0px 50px;
+  @media (max-width: 428px) {
+    font-size: 18px;
+  }
 }
 
 .radio {

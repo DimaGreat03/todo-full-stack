@@ -253,7 +253,7 @@
   margin: 0px 0px 0px 150px;
   
   @media (max-width: 428px) {
-    margin: 0px 0px 0px 70px;
+    margin: 0px 0px 15px 70px;
   }
 }
 
@@ -279,7 +279,7 @@
 }
 
 .buttonDeleteForever {
-  margin-left: 150px;
+  margin-left: 120px;
   font-size: 18px;
   padding: 5px;
   border-radius: 5px;
@@ -288,13 +288,20 @@
 }
 
 .buttonDeleteForeverStart {
-  margin-left: 150px;
-  margin-top: 5px;
+  margin-left: 120px;
   font-size: 18px;
   padding: 5px;
   border-radius: 5px;
   color: rgb(255, 128, 0);
   cursor: pointer;
+}
+
+.move {
+  margin: 0px 0px 0px 25px;
+  @media (max-width: 428px) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 
 

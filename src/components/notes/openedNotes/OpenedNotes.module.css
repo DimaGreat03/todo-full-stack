@@ -11,19 +11,20 @@
 
   @media (max-width: 428px) {
     width: 350px;
+    margin-bottom: 75px;
   }
 }
 
 .wrapper {
-    color: white;
+  color: white;
 }
 
-.h1{
-    margin: 20px 0px 20px 80px;
+.h1 {
+  margin: 20px 0px 20px 80px;
 
-    @media (max-width: 428px) {
-      margin-top: 130px;
-      margin-left: 10px;
-      font-size: 18px;
-    }
+  @media (max-width: 428px) {
+    margin-top: 130px;
+    margin-left: 10px;
+    font-size: 18px;
+  }
 }

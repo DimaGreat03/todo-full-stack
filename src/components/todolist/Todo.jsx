@@ -153,7 +153,7 @@ const Todo = () => {
   const setDateForMainDiv = (untill) => {
     return (
        Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1) <= 0
-        ? untill? <span className={s.untill}>сегодня</span> : null
+        ? untill? <span className={s.untill}>сегодня </span> : null
         : <>
           <span className={s.untill}> {untill !== null
           ? year !== dateFormat(untill, "yyyy")
@@ -184,6 +184,14 @@ const Todo = () => {
      .then((data) => setWatcherT(!watcherT))
      .catch(e => console.log(e))
  };
+
+ const setHowManyDaysLeft = (untill) => {
+  return (
+    Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1) <= 0
+     ? null
+     : <span className={s.left}> - осталось дней: {Math.floor((new Date(untill) - new Date()) / (24 * 60 * 60 * 1000)+1)}</span>
+  )
+}
 
 
   return (
@@ -252,9 +260,8 @@ const Todo = () => {
                 key={e.id}
                 className={li ? (popId == e.id ? s.li : s.li2) : s.li2}
               >
-                {/* checkbox задачи */}
-                
 
+                {/* checkbox задачи */}
                 {
                   e.checkTask
                     ? <img 
@@ -298,7 +305,7 @@ const Todo = () => {
 
                {/* отрисовка титла */}
                   {e.title}
-                  <div className={s.fromDate}>from: {dateFormat(e.createdAt, "dd.mm")}</div>
+                  <div className={s.fromDate}>from: {dateFormat(e.createdAt, "dd.mm")} {e.untill && !e.checkTask && setHowManyDaysLeft(e.untill)} </div>
                 </span>
 
                 {isPopupOpen &&

@@ -19,7 +19,6 @@
     font-size: 17px;
     line-height: 25px;
   }
-
 }
 .li:hover {
   background-color: rgb(52, 60, 80);
@@ -45,6 +44,7 @@
 
 .input {
   margin-right: 0px;
+  vertical-align: middle;
 }
 
 .editInput {
@@ -60,29 +60,32 @@
   color: rgb(97, 97, 97);
   font-size: 22px;
   margin-left: 10px;
+  vertical-align: middle;
 }
 .popupButton:hover {
-   color: aliceblue;
+  color: aliceblue;
 }
 
-.popupButtonProcess{
+.popupButtonProcess {
   color: rgb(179, 35, 35);
   font-size: 22px;
   margin-left: 10px;
+  vertical-align: middle;
+
 }
 
 .addPopup {
-    background-color: rgb(54, 93, 121);
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 15px;
-    margin-left: 10px;
-    margin-bottom: 20px;
-    color: white;
+  background-color: rgb(54, 93, 121);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  color: white;
 
-    @media (max-width: 428px) {
-      font-size: 14px;
-    }
+  @media (max-width: 428px) {
+    font-size: 14px;
+  }
 }
 
 .textarea {
@@ -101,7 +104,7 @@
     overflow: auto;
     width: 250px;
     margin-top: 20px;
-    margin-bottom: 0px
+    margin-bottom: 0px;
   }
 }
 
@@ -112,18 +115,20 @@
   color: white;
   background-color: #252931;
 }
-.buttonDone:hover{
+.buttonDone:hover {
   border-style: solid;
   border-color: rgb(117, 117, 117);
 }
 
 .iconEdit {
   margin-left: 5px;
-  vertical-align: bottom;
+  vertical-align: middle;
+  @media (max-width: 428px) {
+    vertical-align: bottom;
+  }
 }
 
 .loadingPopup {
-  
   vertical-align: middle;
 }
 
@@ -132,7 +137,7 @@
   color: rgb(136, 132, 132);
 }
 
-.inputA{
+.inputA {
   background-color: #2f3542;
   outline: none;
   color: white;
@@ -162,15 +167,9 @@
   margin: 0px;
   margin-right: 40px;
 
-
   @media (max-width: 428px) {
     margin-top: 5px;
     margin-bottom: 22px;
     margin-right: 40px;
   }
 }
-
-
-
-
-
